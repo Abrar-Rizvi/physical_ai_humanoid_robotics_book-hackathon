@@ -153,6 +153,12 @@ A student wants to learn how to construct a Vision-Language-Action (VLA) pipelin
 - What happens when the student has no prior robotics knowledge? (The book aims for beginner-to-intermediate, so it should provide sufficient foundational context.)
 - How does the book maintain engineering accuracy while simplifying complex topics for a Grade 10-12 audience? (This is a core design challenge addressed by the "Constraints" and "Success Criteria".)
 
+## Clarifications
+
+### Session 2025-12-06
+
+- Q: What specific aspects should the "safety rules" in the book cover? → A: Robotic Operational Safety
+
 ## Requirements *(mandatory)*
 
 ### Functional Requirements
