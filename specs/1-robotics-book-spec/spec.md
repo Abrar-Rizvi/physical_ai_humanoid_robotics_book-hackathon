@@ -54,7 +54,7 @@ Clearly connect theory → simulation → real-world testing
 
 Constraints
 
-Word count per chapter: 500–1500 words
+Word count: Total book 4,000–6,000 words; per chapter: 500–1500 words
 
 Style: Markdown, clean headings, technical clarity
 
