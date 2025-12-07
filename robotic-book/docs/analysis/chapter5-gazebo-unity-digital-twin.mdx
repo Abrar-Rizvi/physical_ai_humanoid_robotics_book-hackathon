@@ -1,0 +1,109 @@
+import CodeExample from '@site/src/components/CodeExample';
+
+# Chapter 5: Creating Digital Twins with Gazebo and Unity
+
+Simulation is a critical tool in robotics, allowing us to test and validate our designs in a virtual environment before deploying to physical hardware. This chapter introduces two powerful simulation platforms: Gazebo and Unity.
+
+## What is a Digital Twin?
+
+A digital twin is a virtual model of a physical object or system. In robotics, this means creating a high-fidelity simulation of our robot and its environment. This allows us to test everything from basic movement to complex AI algorithms in a safe, repeatable, and cost-effective manner.
+
+## Robot Models with URDF
+
+Before we can simulate a robot, we need to describe it. The Unified Robot Description Format (URDF) is an XML format for representing a robot model.
+
+Here is an example of a simple two-wheeled robot described in URDF:
+
+<CodeExample title="simple_robot.urdf">
+```xml
+<?xml version="1.0"?>
+<robot name="simple_robot">
+
+  <!-- Base Link -->
+  <link name="base_link">
+    <visual>
+      <geometry>
+        <box size="0.4 0.2 0.1"/>
+      </geometry>
+      <material name="blue">
+        <color rgba="0.0 0.0 0.8 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <box size="0.4 0.2 0.1"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- Right Wheel -->
+  <link name="right_wheel">
+    <visual>
+      <geometry>
+        <cylinder radius="0.05" length="0.04"/>
+      </geometry>
+      <material name="black">
+        <color rgba="0.0 0.0 0.0 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <cylinder radius="0.05" length="0.04"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="base_to_right_wheel" type="continuous">
+    <parent link="base_link"/>
+    <child link="right_wheel"/>
+    <origin xyz="-0.1 -0.13 0.0" rpy="1.5707 0 0"/>
+    <axis xyz="0 0 1"/>
+  </joint>
+
+  <!-- Left Wheel -->
+  <link name="left_wheel">
+    <visual>
+      <geometry>
+        <cylinder radius="0.05" length="0.04"/>
+      </geometry>
+      <material name="black"/>
+    </visual>
+    <collision>
+      <geometry>
+        <cylinder radius="0.05" length="0.04"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="base_to_left_wheel" type="continuous">
+    <parent link="base_link"/>
+    <child link="left_wheel"/>
+    <origin xyz="-0.1 0.13 0.0" rpy="1.5707 0 0"/>
+    <axis xyz="0 0 1"/>
+  </joint>
+
+</robot>
+```
+</CodeExample>
+
+## Gazebo for ROS 2 Integration
+
+Gazebo is a popular open-source robotics simulator that is tightly integrated with ROS. It provides realistic physics simulation and a wide range of sensor models.
+
+Key features of Gazebo include:
+-   Excellent ROS 2 integration.
+-   A large library of pre-built robot models and environments.
+-   A plugin-based architecture for extending its functionality.
+
+We will walk through the process of launching a simple robot in a Gazebo world.
+
+## Unity for High-Fidelity Visualization
+
+Unity is a powerful game engine that can also be used for robotics simulation. It excels at creating visually stunning and complex interactive environments.
+
+Key features of Unity for robotics include:
+-   High-quality graphics and rendering.
+-   A rich asset store for environments and models.
+-   The Unity Robotics Hub for integration with ROS 2.
+
+This chapter will provide an overview of how Unity can be used to create compelling digital twins for robotics.

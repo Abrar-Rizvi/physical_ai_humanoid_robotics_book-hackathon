@@ -2,46 +2,31 @@
 sidebar_position: 1
 ---
 
-# Tutorial Intro
+# Introduction to the Physical AI & Humanoid Robotics Book
 
-Let's discover **Docusaurus in less than 5 minutes**.
+Welcome to the authoritative handbook on Physical AI and Humanoid Robotics. This book is designed to serve as a comprehensive guide for students, hobbyists, and professionals who are passionate about the future of robotics and artificial intelligence.
 
-## Getting Started
+## Our Mission
 
-Get started by **creating a new site**.
+Our mission is to provide a clear, concise, and practical understanding of the core concepts, tools, and techniques required to design, build, and program intelligent robotic systems. We focus on a hands-on approach, bridging the gap between theory and real-world application.
 
-Or **try Docusaurus immediately** with **[docusaurus.new](https://docusaurus.new)**.
+## Methodology
 
-### What you'll need
+This book follows a research-concurrent workflow, ensuring that the content is up-to-date with the latest advancements in the field. We emphasize:
 
-- [Node.js](https://nodejs.org/en/download/) version 20.0 or above:
-  - When installing Node.js, you are recommended to check all checkboxes related to dependencies.
+- **Engineering Accuracy**: All concepts and examples are thoroughly researched and validated.
+- **Reproducible Simulations**: We provide code and simulation assets to allow you to replicate the results and experiment on your own.
+- **Academic Clarity**: We adhere to high academic standards, including APA-style citations, to encourage further reading and research.
+- **Safety-First**: We instill a safety-first mindset by integrating safety guidelines throughout the book.
 
-## Generate a new site
+## What You'll Learn
 
-Generate a new Docusaurus site using the **classic template**.
+Throughout this book, you will explore:
 
-The classic template will automatically be added to your project after you run the command:
+- The fundamentals of Physical AI and Embodied Intelligence.
+- The Robot Operating System 2 (ROS 2) and its role as the nervous system of a robot.
+- Simulation of robotic systems using Gazebo, Unity, and the NVIDIA Isaac Ecosystem.
+- The construction of Vision-Language-Action (VLA) pipelines.
+- The complete workflow for building an autonomous humanoid robot.
 
-```bash
-npm init docusaurus@latest my-website classic
-```
-
-You can type this command into Command Prompt, Powershell, Terminal, or any other integrated terminal of your code editor.
-
-The command also installs all necessary dependencies you need to run Docusaurus.
-
-## Start your site
-
-Run the development server:
-
-```bash
-cd my-website
-npm run start
-```
-
-The `cd` command changes the directory you're working with. In order to work with your newly created Docusaurus site, you'll need to navigate the terminal there.
-
-The `npm run start` command builds your website locally and serves it through a development server, ready for you to view at http://localhost:3000/.
-
-Open `docs/intro.md` (this page) and edit some lines: the site **reloads automatically** and displays your changes.
+We are excited to have you on this journey into the fascinating world of humanoid robotics!

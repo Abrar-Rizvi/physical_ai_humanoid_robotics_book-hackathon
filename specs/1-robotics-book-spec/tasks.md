@@ -14,25 +14,25 @@ The project will be implemented using an MVP-first approach, focusing on deliver
 
 ## Phase 1: Setup
 
-- [ ] T001 Create Docusaurus project structure at repository root
-- [ ] T002 Configure `docusaurus.config.js` for basic site metadata and plugins
-- [ ] T003 Configure `sidebars.js` with initial structure for all book sections
-- [ ] T004 Create `docs/intro.md` for book introduction and methodology
-- [ ] T005 Create `static/` directory for general static assets
-- [ ] T006 Create `src/components/` directory for custom MDX components
-- [ ] T007 Create `research/` directory for research notes and links
-- [ ] T008 Create `code-examples/` directory for standalone code examples
-- [ ] T009 Create `simulations/` directory for simulation assets
-- [ ] T010 Initialize `.github/workflows/` with placeholder CI files (`docusaurus-build.yml`, `quality-checks.yml`)
+- [x] T001 Create Docusaurus project structure at repository root
+- [x] T002 Configure `docusaurus.config.js` for basic site metadata and plugins
+- [x] T003 Configure `sidebars.js` with initial structure for all book sections
+- [x] T004 Create `docs/intro.md` for book introduction and methodology
+- [x] T005 Create `static/` directory for general static assets
+- [x] T006 Create `src/components/` directory for custom MDX components
+- [x] T007 Create `research/` directory for research notes and links
+- [x] T008 Create `code-examples/` directory for standalone code examples
+- [x] T009 Create `simulations/` directory for simulation assets
+- [x] T010 Initialize `.github/workflows/` with placeholder CI files (`docusaurus-build.yml`, `quality-checks.yml`)
 
 ## Phase 2: Foundational Tasks
 
-- [ ] T011 [P] Implement base MDX component for APA-style citations in `src/components/Citation.js`
-- [ ] T012 [P] Implement base MDX component for enhanced diagrams in `src/components/Diagram.js`
-- [ ] T013 [P] Implement base MDX component for code examples in `src/components/CodeExample.js`
-- [ ] T014 Set up `research.md` (or a `references.mdx`) to manage consolidated research findings and bibliography.
-- [ ] T014.1 Document key architectural decisions using `/sp.adr` as per `plan.md` section 5.
-- [ ] T014.2 Define, implement, and validate consistent safety rules; create `safety-guidelines.mdx`
+- [x] T011 [P] Implement base MDX component for APA-style citations in `src/components/Citation.js`
+- [x] T012 [P] Implement base MDX component for enhanced diagrams in `src/components/Diagram.js`
+- [x] T013 [P] Implement base MDX component for code examples in `src/components/CodeExample.js`
+- [x] T014 Set up `research.md` (or a `references.mdx`) to manage consolidated research findings and bibliography.
+- [x] T014.1 Document key architectural decisions using `/sp.adr` as per `plan.md` section 5.
+- [x] T014.2 Define, implement, and validate consistent safety rules; create `safety-guidelines.mdx`
 
 ## Phase 3: User Story 1 - Learning Physical AI Fundamentals (P1)
 
@@ -40,12 +40,12 @@ The project will be implemented using an MVP-first approach, focusing on deliver
 
 **Independent Test Criteria**: Student can explain embodied intelligence and its relevance; can visualize complex concepts like control loops from diagrams.
 
-- [ ] T015 [P] [US1] Draft `docs/foundation/chapter1-physical-ai-fundamentals.mdx` covering Physical AI fundamentals
-- [ ] T016 [P] [US1] Draft `docs/foundation/chapter2-embodied-intelligence.mdx` covering embodied intelligence
-- [ ] T017 [P] [US1] Add relevant diagrams/diagram descriptions to `static/` and link in `chapter1-physical-ai-fundamentals.mdx`
-- [ ] T018 [P] [US1] Add relevant diagrams/diagram descriptions to `static/` and link in `chapter2-embodied-intelligence.mdx`
-- [ ] T019 [P] [US1] Ensure `sidebars.js` correctly links to `docs/foundation/chapter1-physical-ai-fundamentals.mdx`
-- [ ] T020 [P] [US1] Ensure `sidebars.js` correctly links to `docs/foundation/chapter2-embodied-intelligence.mdx`
+- [x] T015 [P] [US1] Draft `docs/foundation/chapter1-physical-ai-fundamentals.mdx` covering Physical AI fundamentals
+- [x] T016 [P] [US1] Draft `docs/foundation/chapter2-embodied-intelligence.mdx` covering embodied intelligence
+- [x] T017 [P] [US1] Add relevant diagrams/diagram descriptions to `static/` and link in `chapter1-physical-ai-fundamentals.mdx`
+- [x] T018 [P] [US1] Add relevant diagrams/diagram descriptions to `static/` and link in `chapter2-embodied-intelligence.mdx`
+- [x] T019 [P] [US1] Ensure `sidebars.js` correctly links to `docs/foundation/chapter1-physical-ai-fundamentals.mdx`
+- [x] T020 [P] [US1] Ensure `sidebars.js` correctly links to `docs/foundation/chapter2-embodied-intelligence.mdx`
 
 ## Phase 4: User Story 2 - Simulating Robotics with ROS 2 and Gazebo/Unity (P1)
 
@@ -53,16 +53,16 @@ The project will be implemented using an MVP-first approach, focusing on deliver
 
 **Independent Test Criteria**: Student can create a simple robot model (URDF snippet) and launch it in Gazebo/Unity; simulated robot responds to ROS 2 commands.
 
-- [ ] T021 [P] [US2] Draft `docs/analysis/chapter3-ros2-nervous-system.mdx` covering ROS 2 nodes, topics, services, actions
-- [ ] T022 [P] [US2] Draft `docs/analysis/chapter4-ros2-communication-patterns.mdx` covering advanced ROS 2 communication
-- [ ] T023 [P] [US2] Draft `docs/analysis/chapter5-gazebo-unity-digital-twin.mdx` covering Gazebo and Unity simulation
-- [ ] T024 [P] [US2] Create example URDF snippet in `code-examples/urdf-models/simple_robot.urdf`
-- [ ] T025 [P] [US2] Create ROS 2 node pseudo-code examples in `code-examples/ros2-pkg/`
-- [ ] T026 [P] [US2] Develop a basic Gazebo world file in `simulations/gazebo-worlds/simple_world.sdf`
-- [ ] T027 [P] [US2] Integrate URDF and ROS 2 examples into `docs/analysis/chapter3-ros2-nervous-system.mdx` and `docs/analysis/chapter5-gazebo-unity-digital-twin.mdx`
-- [ ] T028 [P] [US2] Ensure `sidebars.js` correctly links to `docs/analysis/chapter3-ros2-nervous-system.mdx`
-- [ ] T029 [P] [US2] Ensure `sidebars.js` correctly links to `docs/analysis/chapter4-ros2-communication-patterns.mdx`
-- [ ] T030 [P] [US2] Ensure `sidebars.js` correctly links to `docs/analysis/chapter5-gazebo-unity-digital-twin.mdx`
+- [x] T021 [P] [US2] Draft `docs/analysis/chapter3-ros2-nervous-system.mdx` covering ROS 2 nodes, topics, services, actions
+- [x] T022 [P] [US2] Draft `docs/analysis/chapter4-ros2-communication-patterns.mdx` covering advanced ROS 2 communication
+- [x] T023 [P] [US2] Draft `docs/analysis/chapter5-gazebo-unity-digital-twin.mdx` covering Gazebo and Unity simulation
+- [x] T024 [P] [US2] Create example URDF snippet in `code-examples/urdf-models/simple_robot.urdf`
+- [x] T025 [P] [US2] Create ROS 2 node pseudo-code examples in `code-examples/ros2-pkg/`
+- [x] T026 [P] [US2] Develop a basic Gazebo world file in `simulations/gazebo-worlds/simple_world.sdf`
+- [x] T027 [P] [US2] Integrate URDF and ROS 2 examples into `docs/analysis/chapter3-ros2-nervous-system.mdx` and `docs/analysis/chapter5-gazebo-unity-digital-twin.mdx`
+- [x] T028 [P] [US2] Ensure `sidebars.js` correctly links to `docs/analysis/chapter3-ros2-nervous-system.mdx`
+- [x] T029 [P] [US2] Ensure `sidebars.js` correctly links to `docs/analysis/chapter4-ros2-communication-patterns.mdx`
+- [x] T030 [P] [US2] Ensure `sidebars.js` correctly links to `docs/analysis/chapter5-gazebo-unity-digital-twin.mdx`
 
 ## Phase 5: User Story 3 - Exploring NVIDIA Isaac Ecosystem (P2)
 
@@ -70,11 +70,11 @@ The project will be implemented using an MVP-first approach, focusing on deliver
 
 **Independent Test Criteria**: Student can describe how Isaac Sim and Isaac ROS enable advanced simulations and real-world deployment; understands VSLAM and Nav2 for autonomous navigation.
 
-- [ ] T031 [P] [US3] Draft `docs/analysis/chapter6-nvidia-isaac-sim-ecosystem.mdx` covering Isaac Sim, Isaac ROS, VSLAM, Nav2
-- [ ] T032 [P] [US3] Add diagrams/descriptions for Isaac Sim architecture to `static/`
-- [ ] T033 [P] [US3] Outline Isaac ROS examples or concepts in `code-examples/ros2-pkg/isaac_ros_concepts.md` (or similar)
-- [ ] T034 [P] [US3] Describe VSLAM and Nav2 integration with Isaac Sim
-- [ ] T035 [P] [US3] Ensure `sidebars.js` correctly links to `docs/analysis/chapter6-nvidia-isaac-sim-ecosystem.mdx`
+- [x] T031 [P] [US3] Draft `docs/analysis/chapter6-nvidia-isaac-sim-ecosystem.mdx` covering Isaac Sim, Isaac ROS, VSLAM, Nav2
+- [x] T032 [P] [US3] Add diagrams/descriptions for Isaac Sim architecture to `static/`
+- [x] T033 [P] [US3] Outline Isaac ROS examples or concepts in `code-examples/ros2-pkg/isaac_ros_concepts.md` (or similar)
+- [x] T034 [P] [US3] Describe VSLAM and Nav2 integration with Isaac Sim
+- [x] T035 [P] [US3] Ensure `sidebars.js` correctly links to `docs/analysis/chapter6-nvidia-isaac-sim-ecosystem.mdx`
 
 ## Phase 6: User Story 4 - Building Vision-Language-Action Pipelines (P2)
 
@@ -82,25 +82,25 @@ The project will be implemented using an MVP-first approach, focusing on deliver
 
 **Independent Test Criteria**: Student can outline steps from spoken command to robot execution; identifies LLM's role in interpreting commands and generating ROS 2 actions.
 
-- [ ] T036 [P] [US4] Draft `docs/synthesis/chapter7-vision-language-action-pipelines.mdx` covering Whisper, LLMs, ROS 2 Actions
-- [ ] T037 [P] [US4] Draft `docs/synthesis/chapter8-capstone-autonomous-humanoid.mdx` covering autonomous humanoid workflow
-- [ ] T038 [P] [US4] Create conceptual example for VLA pipeline in `code-examples/fastapi-demo/vla_pipeline_concept.md` (or similar)
-- [ ] T039 [P] [US4] Describe LLM integration and ROS 2 action generation in VLA pipeline
-- [ ] T040 [P] [US4] Ensure `sidebars.js` correctly links to `docs/synthesis/chapter7-vision-language-action-pipelines.mdx`
-- [ ] T041 [P] [US4] Ensure `sidebars.js` correctly links to `docs/synthesis/chapter8-capstone-autonomous-humanoid.mdx`
+- [x] T036 [P] [US4] Draft `docs/synthesis/chapter7-vision-language-action-pipelines.mdx` covering Whisper, LLMs, ROS 2 Actions
+- [x] T037 [P] [US4] Draft `docs/synthesis/chapter8-capstone-autonomous-humanoid.mdx` covering autonomous humanoid workflow
+- [x] T038 [P] [US4] Create conceptual example for VLA pipeline in `code-examples/fastapi-demo/vla_pipeline_concept.md` (or similar)
+- [x] T039 [P] [US4] Describe LLM integration and ROS 2 action generation in VLA pipeline
+- [x] T040 [P] [US4] Ensure `sidebars.js` correctly links to `docs/synthesis/chapter7-vision-language-action-pipelines.mdx`
+- [x] T041 [P] [US4] Ensure `sidebars.js` correctly links to `docs/synthesis/chapter8-capstone-autonomous-humanoid.mdx`
 
 ## Phase 7: Polish & Cross-Cutting Concerns
 
-- [ ] T042 [P] Implement Docusaurus versioning strategy (if required for future releases) in `docusaurus.config.js`
-- [ ] T043 [P] Configure `docusaurus.config.js` with code block formatting and style guide enforcement
-- [ ] T044 [P] Set up CI workflow for Markdown linting in `.github/workflows/quality-checks.yml`
-- [ ] T045 [P] Set up CI workflow for broken link checking in `.github/workflows/quality-checks.yml`
+- [x] T042 [P] Implement Docusaurus versioning strategy (if required for future releases) in `docusaurus.config.js`
+- [x] T043 [P] Configure `docusaurus.config.js` with code block formatting and style guide enforcement
+- [x] T044 [P] Set up CI workflow for Markdown linting in `.github/workflows/quality-checks.yml`
+- [x] T045 [P] Set up CI workflow for broken link checking in `.github/workflows/quality-checks.yml`
 - [ ] T046 [P] Set up CI workflow for sidebar validation script in `.github/workflows/quality-checks.yml`
-- [ ] T047 [P] Set up CI workflow for Docusaurus build test in `.github/workflows/docusaurus-build.yml`
-- [ ] T048 [P] Set up CI workflow for spellcheck in `.github/workflows/quality-checks.yml`
-- [ ] T049 [P] Explore and integrate Docusaurus PDF export plugin or `pandoc` for PDF build from Markdown
-- [ ] T050 [P] Implement plagiarism checks (manual process, document procedure in `quality-checks.md`)
-- [ ] T051 [P] Implement readability checks (automated tool via CI, or manual guidance in `quality-checks.md`)
+- [x] T047 [P] Set up CI workflow for Docusaurus build test in `.github/workflows/docusaurus-build.yml`
+- [x] T048 [P] Set up CI workflow for spellcheck in `.github/workflows/quality-checks.yml`
+- [x] T049 [P] Explore and integrate Docusaurus PDF export plugin or `pandoc` for PDF build from Markdown
+- [x] T050 [P] Implement plagiarism checks (manual process, document procedure in `quality-checks.md`)
+- [x] T051 [P] Implement readability checks (automated tool via CI, or manual guidance in `quality-checks.md`)
 - [ ] T052 [P] Implement APA validation (custom script or linter via CI)
 - [ ] T053 [P] Implement simulation reproducibility tests (scripts in `simulations/` and CI integration)
 - [ ] T054 Final review of all chapters for engineering accuracy, readability, and consistency
@@ -108,7 +108,7 @@ The project will be implemented using an MVP-first approach, focusing on deliver
 - [ ] T056 Validate all URDF files and simulation worlds
 - [ ] T057 Validate all chapter cross-links and Docusaurus sidebar integrity
 - [ ] T058 Validate APA citation completeness and reference list
-- [ ] T059 Perform Docusaurus static site build and publishing verification
+- [x] T059 Perform Docusaurus static site build and publishing verification
 
 ## Dependencies
 
