@@ -1,0 +1,22 @@
+# Chapter 8: Capstone - The Autonomous Humanoid Workflow
+
+This capstone chapter brings together all the concepts we have learned throughout the book into a single, cohesive workflow for an autonomous humanoid robot.
+
+## The Grand Challenge
+
+Our goal is to create a humanoid robot that can perform a simple service task in a simulated home environment, guided by natural language commands. For example: "Please find my water bottle and bring it to me."
+
+## The Complete Workflow
+
+This task requires the integration of every major topic we have covered:
+
+1.  **Embodied Intelligence & Physical AI:** The robot's physical form and capabilities are central to solving the task.
+2.  **ROS 2:** The entire system is built on a ROS 2 architecture, with dozens of nodes communicating with each other.
+3.  **Simulation:** The task is developed and tested entirely within Isaac Sim to ensure safety and repeatability. The robot model is a complex URDF with many joints.
+4.  **Perception:** The robot uses its cameras and a VSLAM system to navigate the environment. It uses object detection to identify the water bottle.
+5.  **VLA Pipeline:** The user's command is processed by our Vision-Language-Action pipeline.
+    -   Whisper transcribes the command.
+    -   An LLM, given the visual scene and the command, generates a multi-step plan (e.g., `[NAVIGATE, kitchen]`, `[SEARCH, water_bottle]`, `[GRASP, water_bottle]`, `[NAVIGATE, user]`).
+6.  **Action Execution:** The plan is translated into a series of ROS 2 actions for navigation (Nav2) and manipulation (MoveIt2).
+
+This chapter serves as a detailed walkthrough of how these systems are integrated and work together to achieve a complex goal, providing a blueprint for your own advanced robotics projects.

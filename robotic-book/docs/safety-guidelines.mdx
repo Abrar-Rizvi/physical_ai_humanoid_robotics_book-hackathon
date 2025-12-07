@@ -1,0 +1,27 @@
+# Safety Guidelines for Robotics
+
+Safety is the most critical aspect of robotics engineering. These guidelines must be followed at all times, especially when working with physical hardware.
+
+## Core Safety Principles
+
+1.  **Always Have an E-Stop:** Every robotic system must have a clearly accessible and reliable Emergency Stop (E-Stop) button. All operators must know its location and function.
+
+2.  **Simulate First:** Never run untested code on a physical robot. All new features and logic must be thoroughly tested in a high-fidelity simulator before being deployed to hardware.
+
+3.  **Start Slow:** When testing on hardware for the first time, run the robot at a significantly reduced speed and power.
+
+4.  **Clear the Area:** Ensure the robot's workspace is clear of any obstacles or people before starting a test. Use physical barriers if necessary.
+
+5.  **No Unsafe Movements:** The robot's programming must prevent it from making sudden, unpredictable, or dangerously fast movements. All motions should be smooth and deliberate.
+
+6.  **Cloud Independence for Safety:** Critical safety systems must not rely on a stable internet or cloud connection. The robot must be able to enter a safe state even if it loses connectivity.
+
+7.  **Explainable AI:** For any AI-driven behavior, the system should be able to provide a basic explanation for its decisions, to aid in debugging and understanding.
+
+## Hardware-Specific Guidelines
+
+- **Power Management:** Be cautious when working with power supplies and batteries. Follow all manufacturer instructions.
+- **Pinch Points:** Be aware of all pinch points on the robot's body where you could get caught.
+- **Lifting:** Use proper lifting techniques when moving the robot or heavy components.
+
+Failure to adhere to these guidelines can result in damage to the equipment or serious injury. **When in doubt, err on the side of caution.**

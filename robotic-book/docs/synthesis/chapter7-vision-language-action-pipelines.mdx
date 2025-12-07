@@ -1,0 +1,33 @@
+# Chapter 7: Vision-Language-Action Pipelines
+
+This chapter marks a major step in our journey towards intelligent robotics: the integration of language understanding into our robot's capabilities. We will explore how to build Vision-Language-Action (VLA) pipelines that allow a robot to respond to natural language commands.
+
+## What is a VLA Pipeline?
+
+A VLA pipeline is a system that processes three types of data:
+1.  **Vision:** The robot perceives the world through its cameras.
+2.  **Language:** The robot receives a command in natural language (e.g., "pick up the red block").
+3.  **Action:** The robot translates the command into a physical action.
+
+This allows for a much more intuitive and flexible way of interacting with robots compared to traditional programming.
+
+## Components of our VLA Pipeline
+
+We will build a conceptual VLA pipeline using several cutting-edge technologies:
+
+-   **Whisper:** An automatic speech recognition (ASR) system from OpenAI that can transcribe spoken commands into text.
+-   **Large Language Models (LLMs):** A powerful LLM (like GPT-4) will be used to interpret the text command and the visual input to generate a plan.
+-   **ROS 2 Actions:** The LLM's plan will be translated into a sequence of ROS 2 actions that the robot's controllers can execute.
+
+## The Workflow
+
+The high-level workflow of our VLA pipeline will be:
+
+1.  A user speaks a command.
+2.  Whisper transcribes the speech to text.
+3.  The text, along with a snapshot from the robot's camera, is sent to an LLM.
+4.  The LLM analyzes the scene and the command and generates a high-level plan (e.g., `[GRASP, red_block]`).
+5.  A "plan execution" node translates this plan into a series of ROS 2 actions (e.g., move arm, close gripper).
+6.  The robot executes the actions.
+
+This chapter will focus on the conceptual design and integration of these components.

@@ -1,0 +1,33 @@
+import Diagram from '@site/src/components/Diagram';
+
+# Chapter 6: The NVIDIA Isaac Ecosystem for Robotics
+
+This chapter explores the powerful ecosystem of tools provided by NVIDIA for advanced robotics simulation and development, focusing on Isaac Sim, Isaac ROS, and their integration with core robotics technologies like VSLAM and Nav2.
+
+## NVIDIA Isaac Sim
+
+NVIDIA Isaac Sim is a scalable robotics simulation application and synthetic data generation tool. It is built on NVIDIA Omniverse™ and provides a high-fidelity, physically accurate virtual environment for developing, testing, and training AI-based robots.
+
+<Diagram src="/img/undraw_docusaurus_react.svg" caption="Fig 3: A conceptual view of the Isaac Sim architecture." />
+
+Key features include:
+- **Photorealistic rendering:** Create stunningly realistic scenes for training and testing perception algorithms.
+- **Accurate physics simulation:** Powered by NVIDIA PhysX 5.
+- **Seamless ROS/ROS 2 integration:** Easily connect your existing ROS-based robot software.
+
+## Isaac ROS
+
+Isaac ROS is a collection of hardware-accelerated packages that make it easier for ROS 2 developers to build high-performance solutions on NVIDIA hardware. These packages provide optimized implementations for common robotics tasks.
+
+Example Isaac ROS packages include:
+- `isaac_ros_vslam`: For Visual SLAM (Simultaneous Localization and Mapping).
+- `isaac_ros_apriltag`: For AprilTag detection.
+- `isaac_ros_object_detection`: For detecting objects using models from the TAO Toolkit.
+
+## VSLAM and Navigation with Nav2
+
+- **VSLAM (Visual Simultaneous Localization and Mapping):** We will explore how Isaac ROS Gems like `isaac_ros_vslam` can be used within Isaac Sim to create a map of the environment and track the robot's position using only camera data.
+
+- **Nav2:** Once we have a map, we can use the standard ROS 2 navigation stack, Nav2, to perform autonomous navigation. We will discuss how to integrate Nav2 with a robot in Isaac Sim.
+
+This chapter will provide a conceptual overview and guide you on where to find resources to get started with this powerful ecosystem.

@@ -1,0 +1,26 @@
+name: Quality Checks
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  lint-and-spellcheck:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+      - name: Install dependencies
+        run: npm install
+        working-directory: ./robotic-book
+      - name: Install linting and spellcheck tools
+        run: npm install -g markdownlint-cli cspell
+      - name: Run Markdown Linter
+        run: markdownlint --config .markdownlint.jsonc "**/*.md"
+      - name: Run Spellcheck
+        run: cspell "**/*.md"

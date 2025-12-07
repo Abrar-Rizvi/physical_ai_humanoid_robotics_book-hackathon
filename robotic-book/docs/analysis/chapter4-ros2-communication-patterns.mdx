@@ -1,0 +1,18 @@
+# Chapter 4: Advanced ROS 2 Communication Patterns
+
+Building on the core concepts from the previous chapter, we now explore more advanced communication patterns in ROS 2 that are essential for building complex robotic systems.
+
+## Quality of Service (QoS)
+
+In a real-world robotic system, not all data is created equal. Some data, like an emergency stop signal, must be delivered reliably. Other data, like a video stream, can afford to drop a few frames. ROS 2's Quality of Service (QoS) settings allow you to fine-tune the reliability and durability of communication for each topic.
+
+We will explore common QoS profiles, such as:
+- Reliability (Best-effort vs. Reliable)
+- Durability (Volatile vs. Transient Local)
+- History (Keep last vs. Keep all)
+
+## Launch Files
+
+As your robotic system grows to include many nodes, starting them all manually becomes tedious and error-prone. ROS 2 launch files allow you to define a multi-node system in a single Python script, making it easy to launch and configure your entire application with one command.
+
+This chapter will demonstrate how to create a simple launch file to start multiple nodes and remap their topics.
