@@ -1,15 +1,16 @@
 <!--
 Sync Impact Report:
-Version change: 0.0.0 (initial) → 1.0.0
+Version change: 1.0.0 → 1.1.0
 Modified principles:
-- Original template principles replaced with new set
-Added sections: Purpose, Standards, Constraints, Success Criteria, Scope, System Requirements, Team Workflow Rules, Ethics & Safety, Chapter Rules, Deliverables, Completion Definition
-Removed sections: None (all original template sections replaced or incorporated)
+- Section 6 (Scope) updated to include RAG Chatbot.
+Added sections:
+- Section 14 (RAG Chatbot Integration) and its subsections.
+Removed sections: None
 Templates requiring updates:
-- .specify/templates/plan-template.md ⚠ pending
-- .specify/templates/spec-template.md ⚠ pending
-- .specify/templates/tasks-template.md ⚠ pending
-- .specify/templates/commands/*.md ⚠ pending
+- .specify/templates/plan-template.md ⚠ pending (check for RAG chatbot specific rules in "Approved Technologies")
+- .specify/templates/spec-template.md ⚠ pending (check for RAG chatbot specific requirements)
+- .specify/templates/tasks-template.md ⚠ pending (check for RAG chatbot specific task types)
+- .specify/templates/commands/*.md ⚠ pending (check for outdated references)
 Follow-up TODOs: None
 -->
 # Constitution for Physical AI & Humanoid Robotics Book
@@ -65,6 +66,7 @@ Covers the entire hackathon:
 - NVIDIA Isaac perception & navigation
 - VLA-based action pipelines
 - Capstone: Autonomous humanoid robot
+- **Integrated RAG Chatbot:** Interactive Q&A based on book content.
 
 ## 7. System Requirements
 
@@ -114,8 +116,41 @@ Each chapter must contain:
 
 Document is complete when all required sections exist, are technically accurate, include safety rules, and pass mentor audit.
 
+## 14. RAG Chatbot Integration
+
+To enhance the learning experience, an integrated Retrieval-Augmented Generation (RAG) chatbot will be developed.
+
+### 14.1. Purpose
+
+The chatbot's primary purpose is to answer user questions exclusively based on the content of the book, including user-selected text snippets. This ensures responses are grounded and directly relevant to the learning material.
+
+### 14.2. Approved Technologies
+
+-   **OpenAI Agents/ChatKit SDKs:** For chatbot development and interaction logic.
+-   **FastAPI:** To serve as the backend API for the chatbot.
+-   **Neon Serverless Postgres:** For data storage, particularly for logging and metadata.
+-   **Qdrant Cloud Free Tier:** For vector database storage of book embeddings, enabling efficient retrieval.
+
+### 14.3. Architectural Rules
+
+-   **RAG Pipeline:** The chatbot will adhere to a strict RAG pipeline:
+    1.  **Embeddings:** Book content will be chunked and converted into vector embeddings.
+    2.  **Qdrant:** Embeddings will be stored and indexed in Qdrant for fast semantic search.
+    3.  **Retrieval:** User queries will trigger retrieval of relevant text snippets from Qdrant.
+    4.  **LLM:** The retrieved content, along with the user's query, will be fed into a Large Language Model (LLM) to generate a grounded response.
+-   **Grounded Responses:** All chatbot responses MUST be strictly grounded in the content of the book. The LLM is prohibited from generating information beyond what is present in the provided context.
+
+### 14.4. Safety & Ethics
+
+-   **No Hallucination:** The chatbot MUST NOT hallucinate or generate information not explicitly found within the book's content.
+-   **Safe Logging:** All chatbot interactions and system logs MUST be stored securely in Neon Serverless Postgres, adhering to privacy and data retention policies.
+
+### 14.5. Integration
+
+The RAG chatbot functionality MUST be seamlessly embedded within the published book's UI, providing an interactive question-answering experience directly within the learning environment.
+
 ## Governance
 
 This constitution supersedes all other project practices. Amendments require a formal proposal, review, documentation of rationale, and approval by project mentors. Versioning follows semantic versioning rules outlined in Section 10. Compliance reviews will be conducted regularly by project mentors.
 
-**Version**: 1.0.0 | **Ratified**: 2025-12-04 | **Last Amended**: 2025-12-04
+**Version**: 1.1.0 | **Ratified**: 2025-12-04 | **Last Amended**: 2025-12-08

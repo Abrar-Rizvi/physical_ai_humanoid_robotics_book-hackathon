@@ -1,0 +1,80 @@
+/* robotic-book/src/components/ChatbotUI.module.css */
+.chatbotContainer {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+}
+
+.chatbotToggle {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.chatWindow {
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
+  width: 300px;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px; /* Space between window and toggle button */
+}
+
+.messagesContainer {
+  flex-grow: 1;
+  padding: 10px;
+  overflow-y: auto;
+  border-bottom: 1px solid #eee;
+}
+
+.message {
+  margin-bottom: 8px;
+  padding: 5px 10px;
+  border-radius: 15px;
+  max-width: 80%;
+}
+
+.user {
+  background-color: #e0e0e0;
+  align-self: flex-end;
+  margin-left: auto;
+}
+
+.bot {
+  background-color: #e6f7ff;
+  align-self: flex-start;
+  margin-right: auto;
+}
+
+.inputContainer {
+  display: flex;
+  padding: 10px;
+  border-top: 1px solid #eee;
+}
+
+.chatInput {
+  flex-grow: 1;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  padding: 8px 12px;
+  margin-right: 8px;
+}
+
+.sendButton {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 8px 15px;
+  cursor: pointer;
+}
