@@ -23,6 +23,7 @@ Before starting, ensure you have:
 - [x] Image optimization tool access (Squ oosh.app or equivalent)
 
 **Verify Prerequisites**:
+
 ```bash
 # Check Node version
 node --version  # Should be v20.x.x or higher
@@ -44,20 +45,23 @@ npm start  # Opens http://localhost:3000
 Download the following images at the specified URLs:
 
 **Hero Image**:
+
 - URL: `https://images.unsplash.com/photo-1535378620166-273708d44e4c?w=1200&q=80`
 - Alternative: `https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=1200&q=80`
 - Save as: `hero-robot-original.jpg`
 
 **Feature Card Images**:
+
 - Card 1 (Humanoid): `https://images.unsplash.com/photo-1561557944-6e7860d1a7eb?w=800&q=80` → `feature-humanoid-original.jpg`
 - Card 2 (Robotic Arm): `https://images.unsplash.com/photo-1563207153-f403bf289096?w=800&q=80` → `feature-arm-original.jpg`
 - Card 3 (AI Brain): `https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=80` → `feature-ai-brain-original.jpg`
 
 ### 1.2 Optimize Images with Squoosh
 
-Visit https://squoosh.app and optimize each image:
+Visit <https://squoosh.app> and optimize each image:
 
 **Hero Image (1200x1600px)**:
+
 1. Upload `hero-robot-original.jpg`
 2. Resize to 1200x1600px (portrait)
 3. Export as **WebP**: Quality 80, target ~180KB
@@ -65,6 +69,7 @@ Visit https://squoosh.app and optimize each image:
 5. Save as `hero-robot.webp` and `hero-robot.jpg`
 
 **Feature Card Images (800x600px each)**:
+
 1. Upload each original feature image
 2. Resize to 800x600px (landscape 4:3 ratio)
 3. Export as **WebP**: Quality 75, target ~130KB
@@ -79,12 +84,14 @@ Visit https://squoosh.app and optimize each image:
 For each optimized image, create a tiny LQIP version:
 
 **Using Squoosh**:
+
 1. Resize to 20px wide (maintain aspect ratio, will be ~27px tall for hero, ~15px tall for cards)
 2. Export as JPG, quality 60
-3. Convert to base64 using online tool: https://www.base64-image.de/
+3. Convert to base64 using online tool: <https://www.base64-image.de/>
 4. Copy base64 string (starts with `data:image/jpeg;base64,`)
 
 **LQIP Output** (save for later use in code):
+
 - `hero-robot-lqip.txt` → Contains base64 string (~1.8KB)
 - `feature-humanoid-lqip.txt` → Contains base64 string (~1.5KB)
 - `feature-arm-lqip.txt` → Contains base64 string (~1.5KB)
@@ -105,6 +112,7 @@ cd robotic-book/static/img
 ```
 
 **Verify Image Sizes**:
+
 ```bash
 ls -lh *.webp *.jpg
 # hero-robot.webp should be ~180KB
@@ -396,7 +404,7 @@ Open `robotic-book/src/pages/index.module.css` and replace entire content with:
 
 ### 2.4 Test Hero Section
 
-1. Save files and check browser (http://localhost:3000)
+1. Save files and check browser (<http://localhost:3000>)
 2. Verify mobile layout (DevTools → Responsive mode → 375px width)
 3. Verify desktop layout (Resize to 1400px+ width)
 4. Test dark mode toggle (click sun/moon icon in navbar)
@@ -662,6 +670,7 @@ Open `robotic-book/src/components/HomepageFeatures/styles.module.css` and replac
 ### 4.1 Performance Validation
 
 **Run Lighthouse Audit**:
+
 1. Open DevTools → Lighthouse tab
 2. Select "Desktop" and "Performance + Accessibility"
 3. Click "Analyze page load"
@@ -671,11 +680,13 @@ Open `robotic-book/src/components/HomepageFeatures/styles.module.css` and replac
    - CLS (Cumulative Layout Shift) = 0
 
 **Repeat for Mobile**:
+
 1. Switch to "Mobile" preset
 2. Run Lighthouse audit
 3. Verify performance score ≥90
 
 **Test 3G Loading**:
+
 1. Open DevTools → Network tab
 2. Set throttling to "Slow 3G"
 3. Hard reload (Ctrl+Shift+R)
@@ -685,10 +696,12 @@ Open `robotic-book/src/components/HomepageFeatures/styles.module.css` and replac
 ### 4.2 Accessibility Validation
 
 **Install axe DevTools Extension**:
-- Chrome: https://chrome.google.com/webstore → Search "axe DevTools"
-- Firefox: https://addons.mozilla.org → Search "axe DevTools"
+
+- Chrome: <https://chrome.google.com/webstore> → Search "axe DevTools"
+- Firefox: <https://addons.mozilla.org> → Search "axe DevTools"
 
 **Run Accessibility Audit**:
+
 1. Open axe DevTools panel
 2. Click "Scan ALL of my page"
 3. Verify 0 violations for WCAG 2.1 AA
@@ -698,6 +711,7 @@ Open `robotic-book/src/components/HomepageFeatures/styles.module.css` and replac
    - Keyboard navigation works (Tab through all interactive elements)
 
 **Test Keyboard Navigation**:
+
 1. Click in browser address bar
 2. Press Tab repeatedly
 3. Verify:
@@ -718,6 +732,7 @@ Test at these breakpoints:
 | 2000px (Ultra-wide) | Max-width 1400px, centered |
 
 **Chrome DevTools Responsive Mode**:
+
 1. Open DevTools → Toggle device toolbar (Ctrl+Shift+M)
 2. Test each breakpoint above
 3. Verify no horizontal scrolling at any width
@@ -732,6 +747,7 @@ Test at these breakpoints:
 5. Measure CLS during toggle (should be 0)
 
 **CLS Measurement**:
+
 1. Open DevTools → Performance panel
 2. Start recording
 3. Toggle dark mode
@@ -798,6 +814,7 @@ Closes #004-homepage-overhaul
 **Symptom**: Tiny placeholder image visible without blur effect
 
 **Solution**:
+
 1. Verify inline style applies `filter: blur(20px)`
 2. Check that LQIP and full image have `position: absolute` in same container
 3. Ensure `transition: all 300ms ease` is set for smooth effect
@@ -807,6 +824,7 @@ Closes #004-homepage-overhaul
 **Symptom**: Feature cards have solid backgrounds instead of frosted glass effect
 
 **Solution**:
+
 1. Check browser support: Firefox <103 doesn't support `backdrop-filter` by default
 2. Verify `@supports (backdrop-filter: blur(10px))` block exists
 3. Test in Chrome/Safari which have full support
@@ -817,6 +835,7 @@ Closes #004-homepage-overhaul
 **Symptom**: Layout shifts when toggling dark mode
 
 **Solution**:
+
 1. Ensure all sizing uses CSS custom properties, not hard-coded values
 2. Verify no `height: auto` switching between themes
 3. Check that images have explicit dimensions or `object-fit: cover`
@@ -827,6 +846,7 @@ Closes #004-homepage-overhaul
 **Symptom**: Broken image icons instead of robot images
 
 **Solution**:
+
 1. Verify images are in `robotic-book/static/img/` directory
 2. Check file names match exactly (case-sensitive)
 3. Ensure Docusaurus dev server is running
@@ -838,6 +858,7 @@ Closes #004-homepage-overhaul
 **Symptom**: Text and image overlap at 768-1023px breakpoint
 
 **Solution**:
+
 1. Verify media query is `@media (min-width: 1024px)` not `max-width`
 2. Check that base styles (mobile) use `flex-direction: column`
 3. Ensure tablet viewports (<1024px) use stacked layout
@@ -850,6 +871,7 @@ Closes #004-homepage-overhaul
 Before marking this feature complete, verify all items:
 
 ### Functionality
+
 - [ ] Hero section displays on homepage
 - [ ] Hero layout is 2-column on desktop (>=1024px)
 - [ ] Hero layout stacks vertically on mobile/tablet (<1024px)
@@ -862,6 +884,7 @@ Before marking this feature complete, verify all items:
 - [ ] Hover effects work (scale, shadow, brightness)
 
 ### Performance
+
 - [ ] Lighthouse performance score ≥90 (desktop)
 - [ ] Lighthouse performance score ≥90 (mobile)
 - [ ] Hero visible within 2s on 3G connection
@@ -869,6 +892,7 @@ Before marking this feature complete, verify all items:
 - [ ] All images optimized (hero ≤200KB, cards ≤150KB)
 
 ### Accessibility
+
 - [ ] WCAG 2.1 AA compliance (axe DevTools: 0 violations)
 - [ ] All images have descriptive alt text
 - [ ] CTA button has 44px+ touch target (mobile)
@@ -877,12 +901,14 @@ Before marking this feature complete, verify all items:
 - [ ] Color contrast ≥4.5:1 (normal), ≥3:1 (large)
 
 ### Responsive Design
+
 - [ ] Mobile (375px): Stacked layout, no horizontal scroll
 - [ ] Tablet (768px): Stacked layout, readable text
 - [ ] Desktop (1024px+): 2-column hero, horizontal features
 - [ ] Ultra-wide (1400px+): Max-width container, centered
 
 ### Dark Mode
+
 - [ ] Hero adapts to dark theme
 - [ ] Feature cards adapt to dark theme (darker glassmorphism)
 - [ ] Image overlay darkens in dark mode
@@ -890,6 +916,7 @@ Before marking this feature complete, verify all items:
 - [ ] Text contrast maintained in both themes
 
 ### Code Quality
+
 - [ ] CSS Modules used for all styling
 - [ ] No Tailwind CSS classes
 - [ ] TypeScript types correct (no errors)

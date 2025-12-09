@@ -23,7 +23,7 @@ tests:
 
 ## Prompt
 
-description: Generate an actionable, dependency-ordered tasks.md for the feature based on available design artifacts.
+description: Generate an actionable, dependency-ordered tasks.md for the feature based on available design artifacts
 ---
 
 ## User Input
@@ -73,7 +73,7 @@ $ARGUMENTS
    - Suggested MVP scope (typically just User Story 1)
    - Format validation: Confirm ALL tasks follow the checklist format (checkbox, ID, labels, file paths)
 
-Context for task generation: 
+Context for task generation:
 
 The tasks.md should be immediately executable - each task must be specific enough that an LLM can complete it without additional context.
 

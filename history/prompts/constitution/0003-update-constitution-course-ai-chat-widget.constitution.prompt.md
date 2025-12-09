@@ -24,7 +24,7 @@ tests:
 ## Prompt
 
 Project: Physical AI & Humanoid Robotics Course Book
-Site: https://devabdullah90.github.io/Spec-Driven-Development-Hackathon-I/docs/overview
+Site: <https://devabdullah90.github.io/Spec-Driven-Development-Hackathon-I/docs/overview>
 Stack: Docusaurus 2
 Goal: Best practical humanoid robotics course on the internet
 
@@ -37,6 +37,7 @@ Rules: Mobile-friendly, dark-mode safe, no heavy libs, zero layout breaks
 Updated the project constitution from version 1.1.0 to 1.2.0 with comprehensive Course AI chat widget requirements.
 
 **Key changes:**
+
 - Expanded Section 14 (RAG Chatbot Integration) with specific Claude via MCP integration details
 - Added Section 14.5 (UI/UX Requirements) with strict design constraints:
   - Bottom-right positioning (20px offset)

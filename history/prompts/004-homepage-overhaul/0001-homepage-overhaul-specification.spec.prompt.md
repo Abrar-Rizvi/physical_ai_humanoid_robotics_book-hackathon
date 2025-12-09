@@ -35,16 +35,16 @@ Redesign both sections in one specification:
 
 1. Hero Section (src/pages/index.tsx or the component that renders the hero)
    - Full-width hero, ~90vh height
-   - Desktop: 2-column layout ’ Left = text, Right = media
+   - Desktop: 2-column layout ï¿½ Left = text, Right = media
    - Mobile: text on top, media below
    - Right side: large futuristic humanoid robot image/video placeholder
-     ’ use a real-looking Unsplash URL or placeholder that looks premium
+     ï¿½ use a real-looking Unsplash URL or placeholder that looks premium
      (example: https://images.unsplash.com/photo-1535378620166-273708d44e4c or similar dramatic robot shot)
    - Left side text (write fresh, high-energy copy):
        " H1: "Master Physical AI & Build Real Humanoid Robots"
        " H2: "The most practical, hands-on course on ROS 2, Gazebo, MoveIt, LLMs and real hardware"
        " Short paragraph (23 lines) that feels authoritative and exciting
-       " One big CTA button: "Start Learning Free ’"
+       " One big CTA button: "Start Learning Free ï¿½"
    - Perfect vertical/horizontal centering, generous spacing
    - Beautiful dark/light mode support using CSS custom properties or classes
    - Subtle overlay or gradient on the image for text readability
@@ -55,9 +55,9 @@ Redesign both sections in one specification:
    - Mobile: stacked vertically with nice margins
    - Each card contains:
        " Large high-resolution robot image as background or top half (not tiny icons)
-         - Card 1 ’ humanoid robot walking/posing
-         - Card 2 ’ industrial robotic arm in action
-         - Card 3 ’ glowing AI brain / neural network robot
+         - Card 1 ï¿½ humanoid robot walking/posing
+         - Card 2 ï¿½ industrial robotic arm in action
+         - Card 3 ï¿½ glowing AI brain / neural network robot
        " Use real Unsplash/Pexels URLs or beautiful placeholders  comment the URLs clearly
    - Premium style options (choose one, must feel expensive):
        " Glassmorphism cards with backdrop-filter blur + subtle inner shadow
@@ -91,12 +91,14 @@ Successfully created comprehensive specification for **Complete Homepage Overhau
 **Scope**: Redesign homepage with immersive hero section (~90vh, 2-column desktop layout) and premium glassmorphism feature cards
 
 **User Stories**: 4 prioritized stories
+
 - P1: Immersive Hero Experience (full-height, dramatic robot visual, compelling copy)
 - P1: Premium Feature Cards Showcase (3 cards with glassmorphism, high-res robot images)
 - P2: Accessible Dark Mode Experience (seamless theme switching)
 - P1: Responsive Mobile-First Design (adaptive layouts for all screen sizes)
 
 **Functional Requirements**: 33 requirements covering:
+
 - Hero Section: FR-001 to FR-010 (layout, content, imagery, responsiveness)
 - Features Section: FR-011 to FR-018 (cards, styling, hover effects)
 - Styling & Theme: FR-019 to FR-023 (CSS-only, dark mode, responsive breakpoints)
@@ -104,6 +106,7 @@ Successfully created comprehensive specification for **Complete Homepage Overhau
 - Integration: FR-030 to FR-033 (zero new dependencies, no breaking changes)
 
 **Success Criteria**: 10 measurable outcomes including:
+
 - SC-001: Hero loads within 2 seconds on 3G
 - SC-002: 60fps hover animations
 - SC-003: WCAG 2.1 AA compliance
@@ -111,18 +114,21 @@ Successfully created comprehensive specification for **Complete Homepage Overhau
 - SC-006: Lighthouse performance score e90
 
 **Design Specifications**: Detailed mockups with:
+
 - Hero: 2-column (desktop), stacked (mobile), suggested Unsplash robot images, gradient overlay
 - Features: 3 glassmorphism cards, specific CSS properties (backdrop-filter blur, semi-transparent backgrounds)
 - Typography: Font sizes, weights, line heights for hero H1/H2/paragraph and feature card headings
 - Suggested copy for all sections (hero headline, CTA, feature card titles/descriptions)
 
 **Technical Approach**:
+
 - Pure CSS Modules (no Tailwind per user constraint)
 - Docusaurus CSS variables (--ifm-*) for dark mode
 - WebP images with JPG fallbacks, lazy loading
 - Graceful degradation for backdrop-filter (glassmorphism) on older browsers
 
 **Quality Validation**: Specification passed all checklist items:
+
 -  Content Quality: No implementation details, user-focused, stakeholder-readable
 -  Requirement Completeness: 0 [NEEDS CLARIFICATION] markers, all requirements testable
 -  Feature Readiness: Clear acceptance criteria, measurable success outcomes
@@ -150,10 +156,10 @@ Successfully created comprehensive specification for **Complete Homepage Overhau
 ## Outcome
 
 -  Impact: Specification ready for planning phase (/sp.plan). Provides complete blueprint for redesigning homepage hero and features sections with premium visuals and glassmorphism design.
-- >ê Tests: Specification quality checklist validation PASSED all items (Content Quality 4/4, Requirement Completeness 8/8, Feature Readiness 4/4). Zero [NEEDS CLARIFICATION] markers remaining.
-- =Á Files: 2 files created (spec.md, checklists/requirements.md) in specs/004-homepage-overhaul/
+- >ï¿½ Tests: Specification quality checklist validation PASSED all items (Content Quality 4/4, Requirement Completeness 8/8, Feature Readiness 4/4). Zero [NEEDS CLARIFICATION] markers remaining.
+- =ï¿½ Files: 2 files created (spec.md, checklists/requirements.md) in specs/004-homepage-overhaul/
 - = Next prompts: Run `/sp.plan` to generate technical implementation plan, or `/sp.clarify` if stakeholders need to review/approve specification first.
-- >à Reflection: Successfully translated user's detailed UI/UX requirements into a comprehensive, business-focused specification without leaking implementation details. Made informed decisions (glassmorphism style, specific image URLs, exact copy) to eliminate all clarification needs and enable immediate planning. Specification balances completeness (33 FRs, 10 SCs, 6 edge cases) with readability for non-technical stakeholders. Quality checklist confirms spec meets all readiness criteria for next phase.
+- >ï¿½ Reflection: Successfully translated user's detailed UI/UX requirements into a comprehensive, business-focused specification without leaking implementation details. Made informed decisions (glassmorphism style, specific image URLs, exact copy) to eliminate all clarification needs and enable immediate planning. Specification balances completeness (33 FRs, 10 SCs, 6 edge cases) with readability for non-technical stakeholders. Quality checklist confirms spec meets all readiness criteria for next phase.
 
 ## Evaluation notes (flywheel)
 

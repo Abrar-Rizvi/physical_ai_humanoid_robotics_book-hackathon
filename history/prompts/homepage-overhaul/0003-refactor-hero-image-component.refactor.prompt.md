@@ -53,9 +53,8 @@ As the main request completes, you MUST create and complete a PHR (Prompt Histor
    - No unresolved placeholders; path under `history/prompts/` and matches stage; stage/title/date coherent; print ID + path + stage + title.
    - On failure: warn, don't block. Skip only for `/sp.phr`.
 
-
-/sp.implement src/pages/index.tsx 
-  --instruction "Refactor only the HERO_IMAGE object: remove webp/jpg/lqipDataUrl properties and replace with a single imgPath property. Keep alt text if needed, and update any references accordingly." 
+/sp.implement src/pages/index.tsx
+  --instruction "Refactor only the HERO_IMAGE object: remove webp/jpg/lqipDataUrl properties and replace with a single imgPath property. Keep alt text if needed, and update any references accordingly."
   --example "{ title: 'Foundations of Physical AI', imgPath: '/img/one.png', description: <>Start from the ground up, understanding how robots perceive, reason, and act in the physical world. Explore the core concepts of embodied intelligence.</> }"
 
 ## Response snapshot

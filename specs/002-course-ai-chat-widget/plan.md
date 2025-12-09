@@ -12,38 +12,45 @@ The Course AI Chat Widget enables students to ask questions about course content
 ## Technical Context
 
 **Language/Version**:
+
 - Frontend: TypeScript 5.6.2, React 19.0.0
 - Backend: Python 3.11+
 
 **Primary Dependencies**:
+
 - Frontend: Docusaurus 3.9.2, React 19, CSS Modules (no additional libraries)
 - Backend: FastAPI 0.104.1+, Pydantic 2.5.0+, httpx 0.25.2+ (for MCP client)
 
 **Storage**: N/A (stateless design, no persistence required)
 
 **Testing**:
+
 - Frontend: Jest + React Testing Library
 - Backend: pytest
 - Integration: Manual E2E (user query → backend → mock MCP → response)
 
 **Target Platform**:
+
 - Frontend: Modern browsers (Chrome 90+, Firefox 88+, Safari 14+, Edge 90+), mobile responsive
 - Backend: Linux/Windows server (Docker-compatible)
 
 **Project Type**: Web application (separated frontend + backend)
 
 **Performance Goals**:
+
 - Frontend: <100ms UI response time (open/close/typing)
 - Backend: <2s p95 API response time (including MCP/Claude calls)
 - Bundle size: <50KB additional JavaScript (widget only)
 
 **Constraints**:
+
 - Zero heavy dependencies (no Tidio, Intercom, Redux, Tailwind)
 - Must work with Docusaurus 2 (no swizzling core components)
 - Mobile-first, dark-mode safe, WCAG 2.1 AA accessible
 - Fixed positioning only (no layout shifts)
 
 **Scale/Scope**:
+
 - Expected users: 100-500 concurrent students
 - Message history: Max 50 messages per session (client-side limit)
 - API rate limit: 10 requests/minute per IP
@@ -156,10 +163,12 @@ humanoid-robotic-book/
 **Objective**: Resolve all technical unknowns and document technology decisions.
 
 **Deliverables**:
+
 - ✅ `research.md` created with 15 technical decisions documented
 - ✅ All "NEEDS CLARIFICATION" items resolved
 
 **Key Decisions Made**:
+
 1. Architecture: Client-side widget + backend RAG API
 2. Integration: Docusaurus Root wrapper (no swizzling)
 3. State management: React useState (no Redux/Zustand)
@@ -183,6 +192,7 @@ humanoid-robotic-book/
 **Objective**: Define data models, API contracts, and developer documentation.
 
 **Deliverables**:
+
 - ✅ `data-model.md` created with 8 core entities:
   - Message, ChatSession, PageContext, ChatRequest, ChatResponse, Source, ResponseMetadata, ErrorState
 - ✅ TypeScript type definitions for frontend
@@ -209,6 +219,7 @@ humanoid-robotic-book/
 **Command**: `/sp.tasks`
 
 **Expected Output**: `tasks.md` with:
+
 - Prioritized user stories (P1, P2, P3)
 - Granular tasks for frontend widget implementation
 - Granular tasks for backend API implementation
@@ -316,6 +327,7 @@ humanoid-robotic-book/
 **Why**: Docusaurus automatically uses `src/theme/Root.js` as a global wrapper without requiring swizzling or config changes. This is the recommended pattern for site-wide components.
 
 **File Structure**:
+
 ```javascript
 // robotic-book/src/theme/Root.js
 import React from 'react';
@@ -336,6 +348,7 @@ export default function Root({children}) {
 **Critical Rule**: Use ONLY Docusaurus CSS variables. Never hardcode colors.
 
 **Allowed Variables**:
+
 - `--ifm-background-surface-color` (widget background)
 - `--ifm-font-color-base` (text color)
 - `--ifm-color-primary` (buttons, header)
@@ -350,10 +363,12 @@ export default function Root({children}) {
 **Breakpoint**: 768px (Docusaurus default)
 
 **Desktop (>768px)**:
+
 - Width: 400px fixed
 - Position: `bottom: 20px; right: 20px`
 
 **Mobile (≤768px)**:
+
 - Width: `calc(100vw - 40px)` (full width minus margins)
 - Position: `bottom: 20px; left: 20px; right: 20px`
 
@@ -362,6 +377,7 @@ export default function Root({children}) {
 **MCP Server**: context7
 
 **Flow**:
+
 1. Backend calls context7 MCP with query
 2. MCP returns embeddings of relevant book sections
 3. Backend constructs prompt: "Answer this question using ONLY the following context: [embeddings]. Question: [user_query]"
@@ -408,6 +424,7 @@ export default function Root({children}) {
 **Branch**: `002-course-ai-chat-widget`
 **Specs Directory**: `D:\Quarter 4\ai-book\humanoid-robotic-book\specs\002-course-ai-chat-widget`
 **Artifacts Generated**:
+
 - ✅ research.md
 - ✅ data-model.md
 - ✅ contracts/chat-api.yaml

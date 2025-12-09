@@ -24,7 +24,7 @@ tests:
 
 ## Prompt
 
-description: Create or update the feature specification from a natural language feature description.
+description: Create or update the feature specification from a natural language feature description
 ---
 
 ## User Input

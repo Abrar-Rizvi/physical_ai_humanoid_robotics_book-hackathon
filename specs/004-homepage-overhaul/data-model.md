@@ -85,6 +85,7 @@ const HERO_IMAGE = {
 **HeroSection**: Full-height landing section designed to capture attention within 3 seconds and drive enrollment.
 
 **Attributes**:
+
 - `headline` (H1): Primary value proposition
 - `subheadline` (H2): Technology stack and course approach
 - `description` (paragraph): Detailed course benefits
@@ -92,12 +93,14 @@ const HERO_IMAGE = {
 - `robotImage`: High-resolution humanoid robot visual
 
 **Layout Properties**:
+
 - Desktop (>=1024px): Two-column layout (50% text, 50% image)
 - Mobile/Tablet (<1024px): Stacked layout (text above image)
 - Height: ~90vh on desktop, auto on mobile
 - Max-width: 1400px centered
 
 **State Behavior**:
+
 - Initial: LQIP visible, full image hidden (opacity: 0)
 - Transition: When full image loads, LQIP blurs out, full image fades in
 - Duration: ~300ms smooth transition
@@ -170,6 +173,7 @@ const FEATURE_LIST: FeatureCardProps[] = [
 **FeatureCard**: Individual card showcasing a key course value proposition through premium robot imagery and glassmorphism styling.
 
 **Attributes**:
+
 - `title` (string): Card heading (e.g., "Industry-Standard Tools")
 - `description` (string): 2-3 sentence value proposition
 - `imageUrl` (string): Robot-themed background image (WebP primary, JPG fallback)
@@ -177,6 +181,7 @@ const FEATURE_LIST: FeatureCardProps[] = [
 - `iconComponent` (optional React element): Icon from react-icons library
 
 **Styling Properties**:
+
 - **Glassmorphism**:
   - Background: `rgba(255, 255, 255, 0.1)` (light), `rgba(30, 30, 30, 0.3)` (dark)
   - Backdrop filter: `blur(10px)`
@@ -188,6 +193,7 @@ const FEATURE_LIST: FeatureCardProps[] = [
   - Transition: `300ms cubic-bezier(0.4, 0, 0.2, 1)`
 
 **Layout Properties**:
+
 - Desktop (>=1024px): Horizontal row, 3 cards, `calc((100% - 64px) / 3)` width each
 - Mobile/Tablet (<1024px): Vertical stack, 100% width, 24px gap
 - Min-height: 480px (desktop), 400px (mobile)
@@ -340,6 +346,7 @@ const BREAKPOINTS = {
 ### Required Fields
 
 **HeroSection**:
+
 - ✅ headline: Non-empty string
 - ✅ subheadline: Non-empty string
 - ✅ paragraph: Non-empty string
@@ -348,6 +355,7 @@ const BREAKPOINTS = {
 - ✅ image URLs: Valid paths to static/img/ assets
 
 **FeatureCard**:
+
 - ✅ title: Non-empty string, max 50 characters (for card layout)
 - ✅ description: Non-empty string, max 200 characters (2-3 lines max)
 - ✅ imageWebP: Valid path to WebP asset
@@ -411,6 +419,7 @@ Light Mode (data-theme="light")
 This data model defines all component interfaces, state shapes, and data structures required for the homepage overhaul implementation. All entities are pure frontend constructs with no backend persistence or API integration.
 
 **Key Entities**:
+
 1. **HeroSection**: Full-height hero with 2-column layout (desktop) or stacked (mobile)
 2. **FeatureCard**: Glassmorphism-styled cards with robot imagery (3 instances)
 3. **Image Assets**: 4 optimized images with WebP + JPG fallback + LQIP

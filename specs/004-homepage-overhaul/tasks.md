@@ -30,10 +30,10 @@ description: "Task list for Complete Homepage Overhaul with Premium Robot-Themed
 
 **Purpose**: Image asset preparation and project initialization
 
-- [ ] T001 Download hero robot image from Unsplash (https://images.unsplash.com/photo-1535378620166-273708d44e4c?w=1200&q=80) as hero-robot-original.jpg
-- [ ] T002 [P] Download feature card 1 image from Unsplash (https://images.unsplash.com/photo-1561557944-6e7860d1a7eb?w=800&q=80) as feature-humanoid-original.jpg
-- [ ] T003 [P] Download feature card 2 image from Unsplash (https://images.unsplash.com/photo-1563207153-f403bf289096?w=800&q=80) as feature-arm-original.jpg
-- [ ] T004 [P] Download feature card 3 image from Unsplash (https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=80) as feature-ai-brain-original.jpg
+- [ ] T001 Download hero robot image from Unsplash (<https://images.unsplash.com/photo-1535378620166-273708d44e4c?w=1200&q=80>) as hero-robot-original.jpg
+- [ ] T002 [P] Download feature card 1 image from Unsplash (<https://images.unsplash.com/photo-1561557944-6e7860d1a7eb?w=800&q=80>) as feature-humanoid-original.jpg
+- [ ] T003 [P] Download feature card 2 image from Unsplash (<https://images.unsplash.com/photo-1563207153-f403bf289096?w=800&q=80>) as feature-arm-original.jpg
+- [ ] T004 [P] Download feature card 3 image from Unsplash (<https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=80>) as feature-ai-brain-original.jpg
 - [ ] T005 Optimize hero-robot-original.jpg to 1200x1600px WebP (~180KB) and JPG (~200KB) using Squoosh, save as robotic-book/static/img/hero-robot.webp and hero-robot.jpg
 - [ ] T006 [P] Optimize feature-humanoid-original.jpg to 800x600px WebP (~130KB) and JPG (~150KB), save as robotic-book/static/img/feature-humanoid.webp and feature-humanoid.jpg
 - [ ] T007 [P] Optimize feature-arm-original.jpg to 800x600px WebP (~130KB) and JPG (~150KB), save as robotic-book/static/img/feature-arm.webp and feature-arm.jpg
@@ -205,21 +205,26 @@ description: "Task list for Complete Homepage Overhaul with Premium Robot-Themed
 ### Within Each User Story
 
 **User Story 1 (Hero)**:
+
 - T015-T017: Component structure (sequential - modify same file)
 - T018-T020: Mobile styling (sequential - modify same CSS file)
 - T021-T023: Enhancements (sequential - modify same CSS file)
 
 **User Story 2 (Features)**:
+
 - T024-T027: Component structure (sequential - modify same file)
 - T028-T034: Styling (sequential - modify same CSS file)
 
 **User Story 3 (Dark Mode)**:
+
 - T035-T040: All sequential (verify and enhance existing implementations)
 
 **User Story 4 (Responsive)**:
+
 - T041-T052: All verification tasks, can run in parallel with manual testing
 
 **Phase 7 (Polish)**:
+
 - T053-T068: All marked [P] can run in parallel (independent checks)
 
 ### Parallel Opportunities

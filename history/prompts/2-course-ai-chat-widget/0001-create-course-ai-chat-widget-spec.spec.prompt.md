@@ -24,9 +24,10 @@ tests:
 
 ## Prompt
 
-Add a chat widget to my Docusaurus site at https://devabdullah90.github.io/Spec-Driven-Development-Hackathon-I/docs/overview. It's a course book on Physical AI & Humanoid Robotics, built with Spec Kit Plus, Claude, and connected to a context7 MCP server.
+Add a chat widget to my Docusaurus site at <https://devabdullah90.github.io/Spec-Driven-Development-Hackathon-I/docs/overview>. It's a course book on Physical AI & Humanoid Robotics, built with Spec Kit Plus, Claude, and connected to a context7 MCP server.
 
 Requirements:
+
 - Position: Fixed bottom-right corner, 20px from right/bottom edges.
 - Trigger: Click on widget icon (e.g., chat bubble) to open chat container smoothly (slide-up animation, 300ms ease).
 - Chat: Simple textarea for user input + send button; display responses below. Integrate with Claude API via MCP for contextual replies (use course content as context).
@@ -40,11 +41,13 @@ Output: Full React component code (or Docusaurus Swizzle instructions) + CSS. Te
 Created comprehensive feature specification for Course AI Chat Widget with three prioritized user stories:
 
 **User Stories (Independently Testable):**
+
 1. P1 - Ask Quick Course Question: Core chat functionality with 3-second response time
 2. P2 - Get Context-Aware Help: Enhanced with text selection context
 3. P3 - Access Chat on Mobile Device: Responsive mobile support
 
 **Key Specification Elements:**
+
 - 17 functional requirements (FR-001 to FR-017) covering positioning, interaction, accessibility, and error handling
 - 8 measurable success criteria (SC-001 to SC-008) - all technology-agnostic
 - 8 edge cases identified for error scenarios and boundary conditions
@@ -54,6 +57,7 @@ Created comprehensive feature specification for Course AI Chat Widget with three
 - Privacy & Security section for data handling guidance
 
 **Quality Validation:**
+
 - All checklist items passed on first validation
 - Zero [NEEDS CLARIFICATION] markers - specification is complete
 - No implementation details leaked into spec

@@ -180,6 +180,7 @@ When users access the homepage on mobile devices, tablets, or smaller screens, b
 ### Hero Section Design
 
 **Desktop Layout (>=1024px)**:
+
 - **Container**: Full viewport width, ~90vh height, max-width 1400px centered
 - **Left Column (Text)**: 50% width, flexbox centered vertically and horizontally
   - H1: 56-64px font size, font-weight 800, line-height 1.2
@@ -190,6 +191,7 @@ When users access the homepage on mobile devices, tablets, or smaller screens, b
 - **Image Overlay**: Linear gradient overlay (from left: transparent to semi-transparent dark) for text readability
 
 **Mobile & Tablet Layout (<1024px)**:
+
 - **Container**: Full width, auto height (allow stacking)
 - **Text Section**: 100% width, padding 40px 20px, centered text
   - H1: 36-42px font size
@@ -199,12 +201,14 @@ When users access the homepage on mobile devices, tablets, or smaller screens, b
 - **Image Section**: 100% width, 50vh height minimum, robot image with object-fit: cover
 
 **Color Scheme**:
+
 - **Light Mode**: Dark text (#1a1a1a) on light background (#ffffff or gradient), primary color CTA (#0066cc or brand color)
 - **Dark Mode**: Light text (#f5f5f5) on dark background (#1a1a1a or gradient), adjusted CTA color for dark theme
 
 ### Features Section Design
 
 **Card Structure**:
+
 - **Image Placement**: Top half of card (60% height) with large robot image as background (background-size: cover)
 - **Content Area**: Bottom half (40% height) with padding 32px
   - Heading: 32-36px font size, font-weight 700, margin-bottom 16px
@@ -212,6 +216,7 @@ When users access the homepage on mobile devices, tablets, or smaller screens, b
   - Optional Icon: 40-48px size, positioned above or beside heading
 
 **Glassmorphism Styling**:
+
 ```css
 background: rgba(255, 255, 255, 0.1); /* Light mode */
 background: rgba(30, 30, 30, 0.3); /* Dark mode */
@@ -222,18 +227,21 @@ border-radius: 16px;
 ```
 
 **Hover Effects**:
+
 - Transform: `scale(1.04)`
 - Box Shadow: `0 12px 40px 0 rgba(0, 0, 0, 0.2)`
 - Image Brightness: `filter: brightness(1.1)`
 - Transition: `all 300ms cubic-bezier(0.4, 0, 0.2, 1)`
 
 **Desktop Layout (>=1024px)**:
+
 - Three cards in a row with equal width (calc((100% - 64px) / 3))
 - Gap between cards: 32px
 - Container max-width: 1400px, centered
 - Card min-height: 480px
 
 **Mobile & Tablet Layout (<1024px)**:
+
 - Cards stack vertically with 100% width
 - Gap between cards: 24px
 - Horizontal margins: 20px
@@ -242,6 +250,7 @@ border-radius: 16px;
 ### Image Recommendations
 
 **Hero Robot Image**:
+
 - **Suggested URL**: `https://images.unsplash.com/photo-1535378620166-273708d44e4c?w=1200&q=80` (dramatic humanoid robot)
 - **Alternative**: `https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=1200&q=80` (futuristic robot)
 - **Format**: WebP with JPG fallback
@@ -250,6 +259,7 @@ border-radius: 16px;
 - **LQIP**: Generate 20x27px base64-encoded version for blur-up placeholder
 
 **Feature Card Images**:
+
 - **Card 1 (Humanoid Robot)**: `https://images.unsplash.com/photo-1561557944-6e7860d1a7eb?w=800&q=80` (walking humanoid)
 - **Card 2 (Robotic Arm)**: `https://images.unsplash.com/photo-1563207153-f403bf289096?w=800&q=80` (industrial arm)
 - **Card 3 (AI Brain)**: `https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=80` (neural network visualization)
@@ -260,12 +270,14 @@ border-radius: 16px;
 ### Suggested Copy
 
 **Hero Section**:
+
 - **H1**: "Master Physical AI & Build Real Humanoid Robots"
 - **H2**: "The most practical, hands-on course on ROS 2, Gazebo, MoveIt, LLMs and real hardware"
 - **Paragraph**: "Learn to design, simulate, and deploy autonomous humanoid robots from scratch. This comprehensive course combines cutting-edge AI models with industry-standard robotics frameworks, giving you the skills to build the future of physical intelligence."
 - **CTA Button**: "Start Learning Free �" (links to /docs/intro)
 
 **Feature Cards**:
+
 - **Card 1**:
   - Title: "Industry-Standard Tools"
   - Description: "Master ROS 2, Gazebo, and MoveItthe same frameworks powering Boston Dynamics, Tesla, and leading robotics labs worldwide."
@@ -308,6 +320,7 @@ border-radius: 16px;
 ## Dependencies
 
 ### Internal Dependencies
+
 - **Docusaurus Core**: 3.9.2 (already installed)
 - **React**: 19.0.0 (already installed)
 - **Docusaurus Link Component**: For CTA button navigation
@@ -315,10 +328,12 @@ border-radius: 16px;
 - **Existing Theme**: Docusaurus classic theme CSS variables
 
 ### External Dependencies
+
 - **react-icons** (optional): For feature card icons if needed (~1MB total, tree-shakeable)
 - **Image Assets**: Three high-resolution robot images from Unsplash (royalty-free)
 
 ### Asset Dependencies
+
 - **Hero Robot Image**: 1200�1600px WebP, ~150-200KB
 - **Feature Card Images**: 3 images at 800�600px WebP, ~100-150KB each
 - **Total Asset Size**: ~600-800KB for all images (acceptable for modern web, lazy-loaded)
