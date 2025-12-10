@@ -3,54 +3,60 @@ import clsx from 'clsx';
 import Heading from '@theme/Heading';
 import styles from './styles.module.css';
 
-type FeatureItem = {
+interface FeatureCardProps {
   title: string;
-  Svg: React.ComponentType<React.ComponentProps<'svg'>>;
-  description: ReactNode;
-};
+  description: string;
+  imgPath: string;
+  imageAlt: string;
+  icon?: React.ComponentType<React.SVGProps<SVGSVGElement>>;
+}
 
-const FeatureList: FeatureItem[] = [
+// TODO: Replace placeholder image URLs with optimized images after running image optimization tasks
+// See tasks.md T002-T004, T006-T008 for image preparation instructions
+const FEATURE_LIST: FeatureCardProps[] = [
   {
-    title: 'Easy to Use',
-    Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
-    description: (
-      <>
-        Docusaurus was designed from the ground up to be easily installed and
-        used to get your website up and running quickly.
-      </>
-    ),
+    title: "Industry-Standard Tools",
+    description: "Master ROS 2, Gazebo, and MoveIt—the same frameworks powering Boston Dynamics, Tesla, and leading robotics labs worldwide.",
+    imgPath: "/img/industry.jpg",
+    imageAlt: "Humanoid robot demonstrating bipedal locomotion and balance",
   },
   {
-    title: 'Focus on What Matters',
-    Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
-    description: (
-      <>
-        Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-        ahead and move your docs into the <code>docs</code> directory.
-      </>
-    ),
+    title: "Real Hardware Integration",
+    description: "Go beyond simulation with hands-on deployment to real robots. Learn sensor fusion, motor control, and safety-critical systems.",
+    imgPath: "/img/row.jpg",
+    imageAlt: "Industrial robotic arm performing precision manipulation tasks",
   },
   {
-    title: 'Powered by React',
-    Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
-    description: (
-      <>
-        Extend or customize your website layout by reusing React. Docusaurus can
-        be extended while reusing the same header and footer.
-      </>
-    ),
+    title: "AI-Powered Intelligence",
+    description: "Integrate LLMs, computer vision, and VLA models to create robots that perceive, reason, and act autonomously in dynamic environments.",
+    imgPath: "/img/artificial-intelligence.jpg",
+    imageAlt: "Neural network visualization representing AI-driven robot cognition",
   },
 ];
 
-function Feature({title, Svg, description}: FeatureItem) {
+function FeatureCard({
+  title,
+  description,
+  imgPath,
+  imageAlt,
+  icon: Icon,
+}: FeatureCardProps) {
   return (
-    <div className={clsx('col col--4')}>
-      <div className="text--center">
-        <Svg className={styles.featureSvg} role="img" />
+    <div className={styles.featureCard}>
+      <div className={styles.featureCardImage}>
+        <img
+            src={imgPath}
+            alt={imageAlt}
+            className={styles.cardImage}
+            loading="lazy"
+          />
       </div>
-      <div className="text--center padding-horiz--md">
-        <Heading as="h3">{title}</Heading>
-        <p>{description}</p>
+      <div className={styles.featureCardContent}>
+        {Icon && <Icon className={styles.featureIcon} />}
+        <Heading as="h3" className={styles.featureHeading}>
+          {title}
+        </Heading>
+        <p className={styles.featureDescription}>{description}</p>
       </div>
     </div>
   );
@@ -58,13 +64,11 @@ function Feature({title, Svg, description}: FeatureItem) {
 
 export default function HomepageFeatures(): ReactNode {
   return (
-    <section className={styles.features}>
-      <div className="container">
-        <div className="row">
-          {FeatureList.map((props, idx) => (
-            <Feature key={idx} {...props} />
-          ))}
-        </div>
+    <section className={styles.featuresContainer}>
+      <div className={styles.featuresGrid}>
+        {FEATURE_LIST.map((props, idx) => (
+          <FeatureCard key={idx} {...props} />
+        ))}
       </div>
     </section>
   );

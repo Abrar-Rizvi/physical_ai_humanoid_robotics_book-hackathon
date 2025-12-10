@@ -77,20 +77,24 @@ Since spec.md was still a template, derived user stories from plan.md requiremen
 ### Key Design Decisions
 
 **MVP Scope**: Phase 1-3 (32 tasks) = Basic widget with mock responses
+
 - Timeline: 2-3 days (1 developer)
 - Deployment point: Validate UI before backend complexity
 - Value: Immediate visual feedback, stakeholder demos
 
 **Full Feature**: Phase 1-8 (100 tasks) = Production-ready widget
+
 - Timeline: 5-7 days (1 developer), 3-4 days (2 developers with parallelization)
 - Includes: AI responses, error handling, mobile, accessibility, dark mode
 
 **Parallel Execution**: 40+ tasks marked [P] can run concurrently
+
 - Example: Frontend component logic (T013-T022) || Styling (T023-T030)
 - Example: Backend mock API (T033-T037) || MCP integration (T038-T042)
 - Cross-phase: Dark mode (Phase 7) can run alongside Basic UI (Phase 3)
 
 **Format Compliance**: All tasks follow strict checklist format
+
 - `- [ ] TaskID [P?] [Story?] Description with file path`
 - Task IDs: T001-T100 (sequential execution order)
 - [P] markers: Identifies parallelizable tasks (different files, no deps)
@@ -100,16 +104,19 @@ Since spec.md was still a template, derived user stories from plan.md requiremen
 ### Entity & Endpoint Mapping
 
 **Entities (from data-model.md)** mapped to user stories:
+
 - Message, ChatSession, PageContext → US1 (Basic UI)
 - ChatRequest, ChatResponse, Source, ResponseMetadata → US2 (AI Responses)
 - ErrorState → US3 (Error Handling)
 
 **API Endpoints (from contracts/chat-api.yaml)** mapped to user stories:
+
 - POST /api/v1/chat → US2 (AI Responses)
 - GET /api/v1/health → Phase 2 (Foundational)
 - Rate limiting (429 responses) → US3 (Error Handling)
 
 **Tech Stack (from plan.md)** mapped to setup:
+
 - Frontend: React 19, TypeScript 5.6.2, CSS Modules → Phase 1
 - Backend: FastAPI 0.104.1+, Pydantic 2.5.0+, httpx → Phase 1
 - MCP: context7 server integration → US2
@@ -117,6 +124,7 @@ Since spec.md was still a template, derived user stories from plan.md requiremen
 ### Validation Criteria Per User Story
 
 Each user story includes:
+
 - **Goal**: Clear objective
 - **Independent Test**: How to test just this story
 - **Acceptance Scenarios**: Given/When/Then criteria

@@ -145,7 +145,7 @@ As the main request completes, you MUST create and complete a PHR (Prompt Histor
 
 2) Generate Title and Determine Routing:
    - Generate Title: 3–7 words (slug for filename)
-   - Route is automatically determined by stage: 
+   - Route is automatically determined by stage:
      - `constitution` → `history/prompts/constitution/`
      - Feature stages → `history/prompts/<feature-name>/` (spec, plan, tasks, red, green, refactor, explainer, misc)
      - `general` → `history/prompts/general/`
@@ -214,4 +214,5 @@ add , commit and push my code to repo
 ```
 
 The PHR for the `execute-implementation-plan` command and `commit_pr` command has been created.
+
 ```

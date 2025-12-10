@@ -121,6 +121,7 @@ Include:
        • build + deploy pipeline
 
 Technical Requirements:
+
 - Use research-concurrent workflow.
 - APA citation style per constitution.
 - Organize plan by phases.
