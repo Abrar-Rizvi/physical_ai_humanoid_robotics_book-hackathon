@@ -8,6 +8,7 @@
 ## Decision
 
 The project will adopt a multi-tool simulation strategy, leveraging:
+
 - **Gazebo:** For foundational ROS 2 integration and basic robotics simulations.
 - **Unity:** For high-quality visualizations and scenarios where game engine features are beneficial.
 - **NVIDIA Isaac Sim:** For high-fidelity physics simulation, advanced sensor modeling, and perception-based AI training.
