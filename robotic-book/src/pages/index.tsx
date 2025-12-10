@@ -35,9 +35,9 @@ function HomepageHeader() {
         <Heading as="h2" className={styles.heroSubheadline}>
           {HERO_CONTENT.subheadline}
         </Heading>
-        <p className={styles.heroParagraph}>
+        {/* <p className={styles.heroParagraph}>
           {HERO_CONTENT.paragraph}
-        </p>
+        </p> */}
         <Link className={styles.heroCTA} to={HERO_CONTENT.ctaLink}>
           {HERO_CONTENT.ctaText}
         </Link>
