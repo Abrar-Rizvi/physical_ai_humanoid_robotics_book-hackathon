@@ -8,6 +8,7 @@
 ## Decision
 
 The project will adopt and enforce a standardized code formatting and style guide. The following tools will be used:
+
 - **Prettier:** For automated code formatting of JavaScript, TypeScript, and Markdown/MDX files.
 - **ESLint:** For enforcing code style and quality rules in JavaScript/TypeScript.
 - **Python Formatting (e.g., Black):** To be used for all Python code examples.

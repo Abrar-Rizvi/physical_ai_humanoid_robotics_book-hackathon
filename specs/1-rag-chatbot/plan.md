@@ -24,6 +24,7 @@ This plan outlines the implementation strategy for integrating a Retrieval-Augme
 *GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
 
 All relevant Constitution principles are adhered to. The RAG Chatbot integration aligns with:
+
 - Section 6 (Scope): Explicitly includes "Integrated RAG Chatbot: Interactive Q&A based on book content."
 - Section 9 (Ethics & Safety): Requirements for no hallucination and safe logging are covered by the spec.
 - Section 14 (RAG Chatbot Integration): The plan fully aligns with the purpose, approved technologies, architectural rules, safety/ethics, and integration rules defined in this section.
@@ -55,6 +56,7 @@ specs/1-rag-chatbot/
 │       └── components/        # Frontend chatbot UI components
 └── scripts/               # Utility scripts (e.g., content ingestion, embedding generation)
 ```
+
 **Structure Decision**: The project will maintain a monorepo structure. The Docusaurus frontend resides in `robotic-book/`. A new `book-backend/` directory will be created at the project root for the FastAPI RAG services. Utility scripts for content processing will reside in a `scripts/` directory at the root.
 
 ## Complexity Tracking
@@ -122,23 +124,23 @@ Research on optimizing Qdrant for book content embeddings (chunking strategies, 
 ## 8. Implementation Phases
 
 - **Phase 0: Setup & Research**
-    - Setup `book-backend/` folder and basic FastAPI project structure.
-    - Research optimal chunking/embedding strategies for book content.
-    - Research deployment options for FastAPI (Render vs. Fly.io).
+  - Setup `book-backend/` folder and basic FastAPI project structure.
+  - Research optimal chunking/embedding strategies for book content.
+  - Research deployment options for FastAPI (Render vs. Fly.io).
 - **Phase 1: Backend Core Development**
-    - Implement `/embed` endpoint and content ingestion script.
-    - Implement `/store` endpoint to save embeddings to Qdrant.
-    - Implement `/query` endpoint to retrieve relevant content.
-    - Implement `/chat` endpoint for LLM interaction and response generation.
+  - Implement `/embed` endpoint and content ingestion script.
+  - Implement `/store` endpoint to save embeddings to Qdrant.
+  - Implement `/query` endpoint to retrieve relevant content.
+  - Implement `/chat` endpoint for LLM interaction and response generation.
 - **Phase 2: Frontend Integration**
-    - Develop Docusaurus React component for chatbot UI.
-    - Integrate chatbot component into Docusaurus theme/pages.
-    - Connect frontend UI to backend API endpoints.
+  - Develop Docusaurus React component for chatbot UI.
+  - Integrate chatbot component into Docusaurus theme/pages.
+  - Connect frontend UI to backend API endpoints.
 - **Phase 3: Testing & Refinement**
-    - Implement comprehensive unit, integration, and end-to-end tests.
-    - Conduct performance and groundedness testing.
-    - Refine RAG pipeline and LLM prompts based on test results.
+  - Implement comprehensive unit, integration, and end-to-end tests.
+  - Conduct performance and groundedness testing.
+  - Refine RAG pipeline and LLM prompts based on test results.
 - **Phase 4: Deployment**
-    - Deploy FastAPI backend to chosen platform (Render/Fly.io).
-    - Deploy Docusaurus frontend to chosen platform (Vercel/Netlify).
-    - Verify end-to-end functionality in production environment.
+  - Deploy FastAPI backend to chosen platform (Render/Fly.io).
+  - Deploy Docusaurus frontend to chosen platform (Vercel/Netlify).
+  - Verify end-to-end functionality in production environment.

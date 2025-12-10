@@ -156,23 +156,23 @@ The tasks for the "Physical AI & Humanoid Robotics Book" project have been succe
 **Path to Tasks File**: `D:\Quarter 4\ai-book\humanoid-robotic-book\specs\1-robotics-book-spec\tasks.md`
 
 **Summary of Tasks**:
-*   **Total Tasks**: 59
-*   **Tasks by Phase**:
-    *   Phase 1 (Setup): 10 tasks
-    *   Phase 2 (Foundational Tasks): 4 tasks
-    *   Phase 3 (User Story 1 - Learning Physical AI Fundamentals): 6 tasks
-    *   Phase 4 (User Story 2 - Simulating Robotics with ROS 2 and Gazebo/Unity): 10 tasks
-    *   Phase 5 (User Story 3 - Exploring NVIDIA Isaac Ecosystem): 5 tasks
-    *   Phase 6 (User Story 4 - Building Vision-Language-Action Pipelines): 6 tasks
-    *   Phase 7 (Polish & Cross-Cutting Concerns): 18 tasks
+- **Total Tasks**: 59
+- **Tasks by Phase**:
+  - Phase 1 (Setup): 10 tasks
+  - Phase 2 (Foundational Tasks): 4 tasks
+  - Phase 3 (User Story 1 - Learning Physical AI Fundamentals): 6 tasks
+  - Phase 4 (User Story 2 - Simulating Robotics with ROS 2 and Gazebo/Unity): 10 tasks
+  - Phase 5 (User Story 3 - Exploring NVIDIA Isaac Ecosystem): 5 tasks
+  - Phase 6 (User Story 4 - Building Vision-Language-Action Pipelines): 6 tasks
+  - Phase 7 (Polish & Cross-Cutting Concerns): 18 tasks
 
 **Parallel Opportunities**: Many tasks are marked with `[P]`, indicating opportunities for parallel execution, particularly within content creation, asset development, and quality assurance phases.
 
 **Independent Test Criteria per User Story**:
-*   **US1**: Student can explain embodied intelligence and its relevance; can visualize complex concepts like control loops from diagrams.
-*   **US2**: Student can create a simple robot model (URDF snippet) and launch it in Gazebo/Unity; simulated robot responds to ROS 2 commands.
-*   **US3**: Student can describe how Isaac Sim and Isaac ROS enable advanced simulations and real-world deployment; understands VSLAM and Nav2 for autonomous navigation.
-*   **US4**: Student can outline steps from spoken command to robot execution; identifies LLM's role in interpreting commands and generating ROS 2 actions.
+- **US1**: Student can explain embodied intelligence and its relevance; can visualize complex concepts like control loops from diagrams.
+- **US2**: Student can create a simple robot model (URDF snippet) and launch it in Gazebo/Unity; simulated robot responds to ROS 2 commands.
+- **US3**: Student can describe how Isaac Sim and Isaac ROS enable advanced simulations and real-world deployment; understands VSLAM and Nav2 for autonomous navigation.
+- **US4**: Student can outline steps from spoken command to robot execution; identifies LLM's role in interpreting commands and generating ROS 2 actions.
 
 **Suggested MVP Scope**: Complete Phase 1 (Setup), Phase 2 (Foundational Tasks), and Phase 3 (User Story 1 - Learning Physical AI Fundamentals) to establish a functional Docusaurus site with core content.
 

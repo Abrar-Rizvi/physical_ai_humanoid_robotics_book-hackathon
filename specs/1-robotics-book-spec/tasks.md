@@ -116,9 +116,9 @@ The project will be implemented using an MVP-first approach, focusing on deliver
 - Phase 2 (Foundational Tasks) must be completed before any User Story phase.
 - User Story phases can generally be developed in parallel once foundational tasks are complete.
 - Specifically:
-    - T011, T012, T013 (MDX components) are foundational for content creation in all User Story phases.
-    - T014 (Research management) is foundational for all content phases.
-    - T024, T025, T026 (Code and simulation assets) are blocking for content integration in User Story 2.
+  - T011, T012, T013 (MDX components) are foundational for content creation in all User Story phases.
+  - T014 (Research management) is foundational for all content phases.
+  - T024, T025, T026 (Code and simulation assets) are blocking for content integration in User Story 2.
 
 ## Parallel Execution Examples
 

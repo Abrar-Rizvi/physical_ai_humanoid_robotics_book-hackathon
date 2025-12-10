@@ -34,6 +34,7 @@ This guide walks you through setting up the development environment and implemen
 ### Environment Setup
 
 Ensure you have:
+
 - A code editor (VS Code recommended)
 - Terminal access
 - MCP server credentials (for backend)
@@ -720,12 +721,14 @@ uvicorn app.main:app --reload --port 8000
 ## Step 6: Test End-to-End Flow
 
 1. **Start Docusaurus** (if not running):
+
    ```bash
    cd robotic-book
    npm start
    ```
 
 2. **Start FastAPI** (if not running):
+
    ```bash
    cd book-backend
    uvicorn app.main:app --reload --port 8000
@@ -738,6 +741,7 @@ uvicorn app.main:app --reload --port 8000
    - Verify you receive a mock response
 
 **Expected Behavior**:
+
 - Message appears as "user" bubble on right
 - Loading indicator appears briefly
 - Bot response appears as "bot" bubble on left

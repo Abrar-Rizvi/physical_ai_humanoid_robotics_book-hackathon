@@ -27,14 +27,17 @@ Represents a single message in the chat conversation.
 | `status` | `enum` | No | `'pending' \| 'sent' \| 'error'` | Message delivery status (frontend only) |
 
 **Relationships**:
+
 - Belongs to one `ChatSession` (in-memory, not persisted)
 
 **Validation Rules**:
+
 - `text` must not be empty after trimming whitespace
 - `timestamp` must be ≤ current time
 - `sender` must be exactly `'user'` or `'bot'`
 
 **State Transitions** (for `status`):
+
 ```
 pending → sent (successful API response)
 pending → error (API failure)
@@ -42,6 +45,7 @@ error → pending (user retries)
 ```
 
 **Example**:
+
 ```typescript
 {
   id: "550e8400-e29b-41d4-a716-446655440000",
@@ -68,19 +72,23 @@ Represents an ephemeral chat session (client-side only, not persisted on backend
 | `lastActivityAt` | `number` | Yes | Unix timestamp (ms) | Last user/bot interaction |
 
 **Relationships**:
+
 - Has many `Message` entities
 
 **Validation Rules**:
+
 - `messages` array is capped at 50 items (oldest removed on overflow)
 - `lastActivityAt` ≥ `startedAt`
 - Session auto-expires after 24 hours of inactivity (client-side logic)
 
 **Lifecycle**:
+
 - Created when widget is first opened
 - Cleared when user closes widget or refreshes page
 - Not persisted to backend (stateless design)
 
 **Example**:
+
 ```typescript
 {
   sessionId: "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
@@ -108,10 +116,12 @@ Represents the current page context sent with each query.
 | `section` | `string` | No | 0-100 chars | Optional section identifier |
 
 **Validation Rules**:
+
 - `pathname` must start with `/`
 - `title` must not be empty
 
 **Example**:
+
 ```typescript
 {
   title: "Chapter 3: ROS 2 Fundamentals - Physical AI Book",
@@ -135,10 +145,12 @@ Sent from frontend to backend for each user query.
 | `session_id` | `string` | No | UUID v4 | Optional session tracking ID |
 
 **Validation Rules**:
+
 - `user_query` sanitized (HTML stripped, trimmed)
 - `page_context.pathname` validated against known routes (optional strict mode)
 
 **Example**:
+
 ```json
 {
   "user_query": "Explain ROS 2 nodes",
@@ -165,6 +177,7 @@ Returned from backend to frontend after processing query.
 | `metadata` | `ResponseMetadata` | No | Valid object | Performance/debugging info |
 
 **Example**:
+
 ```json
 {
   "response_text": "ROS 2 nodes are independent processes that perform computation...",
@@ -196,6 +209,7 @@ Represents a reference to book content used in the response.
 | `url` | `string` | Yes | Valid relative URL | Link to source section |
 
 **Example**:
+
 ```typescript
 {
   title: "Chapter 5: Gazebo Simulation",
@@ -242,6 +256,7 @@ Represents error conditions in the widget UI.
 | `unknown` | "An unexpected error occurred." | `true` |
 
 **Example**:
+
 ```typescript
 {
   hasError: true,
@@ -292,30 +307,31 @@ ChatResponse (1) ──< (0-5) Source
 
 ### 3.2 Backend Processes Query
 
-6. Backend validates `ChatRequest`
-7. Backend calls context7 MCP to retrieve relevant embeddings
-8. Backend sends retrieved content + query to Claude (via MCP)
-9. Backend constructs `ChatResponse`:
+1. Backend validates `ChatRequest`
+2. Backend calls context7 MCP to retrieve relevant embeddings
+3. Backend sends retrieved content + query to Claude (via MCP)
+4. Backend constructs `ChatResponse`:
    - `response_text`: Claude's answer
    - `sources`: Extracted from embeddings metadata
    - `metadata`: Processing time, model info
-10. Backend returns `ChatResponse` with HTTP 200
+5. Backend returns `ChatResponse` with HTTP 200
 
 ### 3.3 Frontend Displays Response
 
-11. Frontend receives `ChatResponse`
-12. Frontend updates user message status: `'pending'` → `'sent'`
-13. Frontend creates bot `Message` object:
+1. Frontend receives `ChatResponse`
+2. Frontend updates user message status: `'pending'` → `'sent'`
+3. Frontend creates bot `Message` object:
     - `id`: Generate UUID
     - `text`: `response_text` from API
     - `sender`: `'bot'`
     - `timestamp`: `Date.now()`
-14. Frontend adds bot message to `ChatSession.messages`
-15. Frontend scrolls to latest message
+4. Frontend adds bot message to `ChatSession.messages`
+5. Frontend scrolls to latest message
 
 ### 3.4 Error Handling
 
 If step 10 fails (network error, API 4xx/5xx):
+
 - Frontend updates user message status: `'pending'` → `'error'`
 - Frontend sets `ErrorState`:
   - `hasError`: `true`
@@ -412,6 +428,7 @@ class ChatResponse(BaseModel):
 **Rationale**: Prevent memory bloat in long sessions
 
 **Implementation**:
+
 ```typescript
 function addMessage(session: ChatSession, message: Message): ChatSession {
   const updatedMessages = [...session.messages, message];
@@ -431,6 +448,7 @@ function addMessage(session: ChatSession, message: Message): ChatSession {
 **Rationale**: Prevent UI overflow, keep responses concise
 
 **Backend Enforcement**:
+
 - Truncate Claude response if > 4000 chars
 - Append "..." to indicate truncation
 - Log warning for monitoring
