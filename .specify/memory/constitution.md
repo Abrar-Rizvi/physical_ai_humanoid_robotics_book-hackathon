@@ -1,17 +1,3 @@
-<!--
-Sync Impact Report:
-Version change: 1.2.0 → 1.3.0
-Modified principles:
-- Section 4 (Constraints) amended with a new "Markdown & Linting Style" subsection.
-Added sections:
-- Section 4.1 (Markdown & Linting Style)
-Removed sections: None
-Templates requiring updates:
-- .markdownlint.jsonc ✅ updated (MD013 line length set to 200, MD007 disabled)
-- .github/workflows/quality-checks.yml ✅ checked (no changes needed, uses config file)
-- .specify/templates/*.md ✅ checked (no direct impact from styling changes)
-Follow-up TODOs: None
--->
 # Constitution for Physical AI & Humanoid Robotics Book
 
 ## 1. Purpose
