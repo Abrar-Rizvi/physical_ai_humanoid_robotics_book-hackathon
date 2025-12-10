@@ -4,10 +4,10 @@ This document outlines a conceptual example of how a FastAPI backend could serve
 
 ## High-Level Architecture
 
-1.  **ROS 2 System:** The robot itself, running ROS 2 nodes for sensor data, motor control, etc.
-2.  **FastAPI Backend:** A Python server that exposes an API endpoint.
-3.  **LLM Service:** An external Large Language Model API (e.g., GPT-4).
-4.  **ROS 2 <> FastAPI Bridge:** A ROS 2 node that can call the FastAPI endpoint and receive responses.
+1. **ROS 2 System:** The robot itself, running ROS 2 nodes for sensor data, motor control, etc.
+2. **FastAPI Backend:** A Python server that exposes an API endpoint.
+3. **LLM Service:** An external Large Language Model API (e.g., GPT-4).
+4. **ROS 2 <> FastAPI Bridge:** A ROS 2 node that can call the FastAPI endpoint and receive responses.
 
 ## FastAPI Endpoint
 
