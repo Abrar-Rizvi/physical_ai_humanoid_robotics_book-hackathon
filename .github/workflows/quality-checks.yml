@@ -19,8 +19,8 @@ jobs:
         run: npm install
         working-directory: ./robotic-book
       - name: Install linting and spellcheck tools
-        run: npm install -g markdownlint-cli cspell
+        run: npm install markdownlint-cli2 cspell
       - name: Run Markdown Linter
-        run: markdownlint --config .markdownlint.jsonc "**/*.md"
+        run: npx markdownlint-cli2 --config .markdownlint.jsonc "**/*.md" "**/*.mdx" --ignore "**/node_modules/**" --ignore "**/build/**" --ignore "**/robotic-book/.docusaurus/**" --ignore "**/history/**" --ignore "**/specs/**"
       - name: Run Spellcheck
-        run: cspell "**/*.md"
+        run: npx cspell "**/*.md"
