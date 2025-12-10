@@ -57,6 +57,7 @@ Now create the optimal execution plan with these rules:
 Executed complete implementation planning workflow for Course AI Chat Widget feature:
 
 ### Phase 0: Research (Technology Decisions)
+
 - Created `research.md` with 15 critical technical decisions:
   1. Architecture: Client-side React widget + FastAPI backend RAG API
   2. Integration: Docusaurus Root wrapper pattern (zero swizzling)
@@ -75,6 +76,7 @@ Executed complete implementation planning workflow for Course AI Chat Widget fea
   15. Security: Server-side API keys, rate limiting (10/min/IP), input sanitization
 
 ### Phase 1: Design & Contracts
+
 - Created `data-model.md` with 8 core entities:
   - Message, ChatSession, PageContext, ChatRequest, ChatResponse, Source, ResponseMetadata, ErrorState
   - TypeScript interfaces for frontend
@@ -93,6 +95,7 @@ Executed complete implementation planning workflow for Course AI Chat Widget fea
   - Troubleshooting section
 
 ### Implementation Plan Completed
+
 - Technical context: TypeScript 5.6.2, React 19, FastAPI, Pydantic
 - Constitution check: 8/8 gates PASS (minimal deps, mobile-first, zero layout breaks, dark mode, performance, MCP, RAG, privacy)
 - Project structure: Documented frontend (robotic-book/) + backend (book-backend/) separation

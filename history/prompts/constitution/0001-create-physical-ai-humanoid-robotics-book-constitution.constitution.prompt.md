@@ -318,6 +318,7 @@ If you want, I can also make:
 The constitution has been created successfully at `.specify/memory/constitution.md` with version 1.0.0.
 
 Please review the following templates to ensure they align with the new constitution:
+
 - `.specify/templates/plan-template.md`
 - `.specify/templates/spec-template.md`
 - `.specify/templates/tasks-template.md`

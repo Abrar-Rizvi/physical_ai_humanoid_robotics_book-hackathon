@@ -1,3 +1,179 @@
+/* ============================================================================
+   FEATURE CARDS STYLING - Mobile-First Approach with Glassmorphism
+   ============================================================================ */
+
+/* Features Container */
+.featuresContainer {
+  padding: 60px 20px;
+  background: var(--ifm-background-color);
+}
+
+/* Features Grid - Mobile (<1024px) */
+.featuresGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+/* Feature Card - Mobile */
+.featureCard {
+  display: flex;
+  flex-direction: column;
+  min-height: 400px;
+  border-radius: 16px;
+  overflow: hidden;
+  position: relative;
+
+  /* Fallback for browsers without backdrop-filter support */
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+
+  transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Glassmorphism effect for supporting browsers */
+@supports (backdrop-filter: blur(10px)) {
+  .featureCard {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  [data-theme='dark'] .featureCard {
+    background: rgba(30, 30, 30, 0.3);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+}
+
+/* Dark mode fallback (solid background for browsers without backdrop-filter) */
+[data-theme='dark'] .featureCard {
+  background: rgba(30, 30, 30, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+/* Hover Effects */
+.featureCard:hover {
+  transform: scale(1.04);
+  box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.2);
+}
+
+/* Feature Card Image (Top 60%) */
+.featureCardImage {
+  position: relative;
+  width: 100%;
+  height: 60%;
+  overflow: hidden;
+}
+
+.cardImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: filter 300ms ease;
+}
+
+.featureCard:hover .cardImage {
+  filter: brightness(1.1);
+}
+
+/* Feature Card Content (Bottom 40%) */
+.featureCardContent {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 40%;
+}
+
+/* Optional Icon (if used) */
+.featureIcon {
+  width: 40px;
+  height: 40px;
+  margin-bottom: 12px;
+  color: var(--ifm-color-primary);
+}
+
+.featureHeading {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: var(--ifm-font-color-base);
+}
+
+.featureDescription {
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--ifm-font-color-base);
+  opacity: 0.85;
+  margin: 0;
+}
+
+/* ============================================================================
+   DESKTOP LAYOUT (>=1024px)
+   ============================================================================ */
+
+@media (min-width: 1024px) {
+  .featuresContainer {
+    padding: 80px 40px;
+  }
+
+  .featuresGrid {
+    flex-direction: row;
+    gap: 32px;
+    max-width: 1400px;
+  }
+
+  .featureCard {
+    flex: 1;
+    min-height: 480px;
+  }
+
+  .featureCardContent {
+    padding: 32px;
+  }
+
+  .featureIcon {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 16px;
+  }
+
+  .featureHeading {
+    font-size: 32px;
+    margin-bottom: 16px;
+  }
+
+  .featureDescription {
+    font-size: 18px;
+  }
+}
+
+/* ============================================================================
+   ACCESSIBILITY - Reduced Motion
+   ============================================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .featureCard {
+    transition: box-shadow 300ms ease; /* Keep shadow, remove scale */
+  }
+
+  .featureCard:hover {
+    transform: none;
+  }
+
+  .cardImage {
+    transition: none;
+  }
+}
+
+/* ============================================================================
+   LEGACY STYLES (may be used by other components)
+   ============================================================================ */
+
 .features {
   display: flex;
   align-items: center;

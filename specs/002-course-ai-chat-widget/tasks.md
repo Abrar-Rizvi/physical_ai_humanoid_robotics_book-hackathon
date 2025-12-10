@@ -18,6 +18,7 @@ Based on the implementation plan and requirements, the feature has been decompos
 **Independent Test**: Open any Docusaurus page → click chat icon → widget opens → type "test" → send → see message in chat panel. Widget is visible, interactive, and non-intrusive.
 
 **Acceptance Scenarios**:
+
 1. **Given** I'm on any Docusaurus page, **When** I click the floating chat icon (💬), **Then** the chat panel slides up smoothly in 300ms
 2. **Given** the chat panel is open, **When** I type a message and press Enter (or click Send), **Then** my message appears as a user bubble on the right
 3. **Given** I have messages in the chat, **When** I click the X button, **Then** the panel closes smoothly and the icon reappears
@@ -33,6 +34,7 @@ Based on the implementation plan and requirements, the feature has been decompos
 **Independent Test**: Open widget → ask "What is ROS 2?" → receive response containing accurate information from the book → response appears as bot bubble on left. Sources are optionally shown.
 
 **Acceptance Scenarios**:
+
 1. **Given** I'm on the ROS 2 chapter page, **When** I ask "What is ROS 2?", **Then** I receive a response grounded in the chapter content within 2 seconds
 2. **Given** I've sent a query, **When** the backend is processing, **Then** I see a loading indicator ("...")
 3. **Given** the AI responds, **When** the response includes sources, **Then** I see clickable links to relevant book sections
@@ -48,6 +50,7 @@ Based on the implementation plan and requirements, the feature has been decompos
 **Independent Test**: Disconnect from network → send message → see "Connection lost" error banner → reconnect → click retry → message sends successfully.
 
 **Acceptance Scenarios**:
+
 1. **Given** I have no internet connection, **When** I send a message, **Then** I see "Connection lost. Check your internet and retry." with a retry button
 2. **Given** the backend returns a 429 rate limit error, **When** I send too many messages, **Then** I see "Too many requests. Please wait 30 seconds." without a retry button
 3. **Given** an API error occurs, **When** my message fails, **Then** my message shows an error state and I can retry
@@ -63,6 +66,7 @@ Based on the implementation plan and requirements, the feature has been decompos
 **Independent Test**: Open on mobile phone (viewport <768px) → widget adapts to full-width layout → use Tab key to navigate → use screen reader → all interactions work correctly.
 
 **Acceptance Scenarios**:
+
 1. **Given** I'm on a mobile device (<768px width), **When** the widget opens, **Then** it takes full width minus 20px margins on each side
 2. **Given** I'm using a keyboard only, **When** I press Tab, **Then** I can navigate to the chat icon → input field → send button
 3. **Given** I'm using a screen reader, **When** I open the widget, **Then** I hear "Course chat assistant" and can understand the UI structure
@@ -78,6 +82,7 @@ Based on the implementation plan and requirements, the feature has been decompos
 **Independent Test**: Toggle Docusaurus theme (light ↔ dark) → widget colors adapt instantly → no hardcoded colors visible → text remains readable in both modes.
 
 **Acceptance Scenarios**:
+
 1. **Given** I have dark mode enabled, **When** I open the widget, **Then** the widget background, text, and buttons use dark theme colors
 2. **Given** I toggle from light to dark mode, **When** the widget is open, **Then** the widget colors update instantly without requiring reload
 3. **Given** any theme is active, **When** I view the widget, **Then** all text has sufficient contrast (WCAG AA: 4.5:1 ratio)
@@ -101,6 +106,7 @@ Based on the implementation plan and requirements, the feature has been decompos
 ### MVP Scope (Recommended First Deployment)
 
 **User Story 1 only**: Basic chat widget UI with mock responses
+
 - Students can open/close widget
 - Students can send messages (mock response)
 - Zero backend dependency
@@ -112,6 +118,7 @@ Based on the implementation plan and requirements, the feature has been decompos
 ### Full Feature Scope
 
 **User Stories 1-5 complete**: Production-ready chat widget
+
 - US1: Widget UI ✅
 - US2: AI responses (backend + MCP integration)
 - US3: Error handling
@@ -126,6 +133,7 @@ Based on the implementation plan and requirements, the feature has been decompos
 ## Task Organization
 
 Tasks are organized into phases:
+
 1. **Phase 1: Setup** - Project initialization, dependencies
 2. **Phase 2: Foundational** - Shared infrastructure needed by all user stories
 3. **Phase 3: User Story 1** - Basic chat widget UI (MVP)
@@ -155,6 +163,7 @@ Tasks marked with **[P]** can be executed in parallel (different files, no block
 - [X] T008 Create `.env.example` file in `book-backend/` with MCP credential placeholders
 
 **Validation**:
+
 - All directories exist and are committed to git
 - Dependencies installed successfully
 - Backend runs: `uvicorn app.main:app --reload` (no errors)
@@ -174,6 +183,7 @@ Tasks marked with **[P]** can be executed in parallel (different files, no block
 - [X] T012 Create health check endpoint `GET /health` in `book-backend/app/main.py`
 
 **Validation**:
+
 - Type definitions compile without errors
 - Pydantic models validate correctly (run `pytest` if tests exist)
 - CORS allows requests from Docusaurus dev server
@@ -217,6 +227,7 @@ Tasks marked with **[P]** can be executed in parallel (different files, no block
 - [X] T032 [US1] Test widget on multiple Docusaurus pages (homepage, docs page, about page) to verify global presence
 
 **Phase 3 Validation**:
+
 - ✅ Widget icon appears bottom-right on all pages
 - ✅ Click icon → panel slides up in 300ms
 - ✅ Type message → press Enter → user bubble appears on right
@@ -227,6 +238,7 @@ Tasks marked with **[P]** can be executed in parallel (different files, no block
 - ✅ Input field gets focus when panel opens
 
 **Phase 3 Parallel Opportunities**:
+
 - T023-T030 (all styling tasks) can run in parallel if one developer works on component logic (T013-T022) and another on CSS
 
 ---
@@ -264,6 +276,7 @@ Tasks marked with **[P]** can be executed in parallel (different files, no block
 - [ ] T049 [P] [US2] Optionally render sources as clickable links below bot message in `index.tsx`
 
 **Phase 4 Validation**:
+
 - ✅ Backend returns 200 for valid requests
 - ✅ Backend validates requests (400 for invalid input)
 - ✅ MCP client retrieves embeddings from context7
@@ -273,6 +286,7 @@ Tasks marked with **[P]** can be executed in parallel (different files, no block
 - ✅ API errors are logged (not exposed to user yet - that's US3)
 
 **Phase 4 Parallel Opportunities**:
+
 - T038-T042 (MCP integration) can run in parallel with T033-T037 (API endpoint with mock) if two developers work separately
 - T049 (sources rendering) can run in parallel with core API integration
 
@@ -310,6 +324,7 @@ Tasks marked with **[P]** can be executed in parallel (different files, no block
 - [ ] T065 [P] [US3] Style error message status indicator (red dot, italic text) in `styles.module.css`
 
 **Phase 5 Validation**:
+
 - ✅ Network error → user sees "Connection lost" + retry button
 - ✅ Retry button → message re-sends successfully
 - ✅ Rate limit (send 11 messages in 1 minute) → user sees "Too many requests" + no retry button
@@ -318,6 +333,7 @@ Tasks marked with **[P]** can be executed in parallel (different files, no block
 - ✅ Error banner disappears after successful retry
 
 **Phase 5 Parallel Opportunities**:
+
 - T059-T062 (backend error handling) and T050-T058 (frontend error handling) can run in parallel
 - T063-T065 (styling) can run in parallel with error logic implementation
 
@@ -350,6 +366,7 @@ Tasks marked with **[P]** can be executed in parallel (different files, no block
 - [ ] T079 [US4] Test with screen reader (NVDA on Windows or VoiceOver on macOS) to verify semantic structure
 
 **Phase 6 Validation**:
+
 - ✅ Mobile (<768px): Widget full-width minus margins, no layout overflow
 - ✅ Touch targets: All buttons ≥44×44px
 - ✅ Keyboard navigation: Tab moves through icon → input → send → close
@@ -361,6 +378,7 @@ Tasks marked with **[P]** can be executed in parallel (different files, no block
 - ✅ Color contrast: All text meets 4.5:1 ratio (WCAG AA)
 
 **Phase 6 Parallel Opportunities**:
+
 - T066-T070 (mobile CSS) and T071-T079 (accessibility) can run in parallel if one developer handles CSS and another handles ARIA/focus management
 
 ---
@@ -388,6 +406,7 @@ Tasks marked with **[P]** can be executed in parallel (different files, no block
 - [ ] T084 [US5] Verify no hardcoded hex/rgb colors remain in styles.module.css (grep search for `#` and `rgb(`)
 
 **Phase 7 Validation**:
+
 - ✅ Light mode: Widget uses light theme colors
 - ✅ Dark mode: Widget uses dark theme colors
 - ✅ Theme toggle: Widget updates instantly without reload
@@ -395,6 +414,7 @@ Tasks marked with **[P]** can be executed in parallel (different files, no block
 - ✅ Contrast ratios: All text meets 4.5:1 in both modes (Lighthouse score ≥90)
 
 **Phase 7 Parallel Opportunities**:
+
 - This entire phase can run in parallel with other phases if CSS variables are used from the start (recommended)
 
 ---
@@ -434,6 +454,7 @@ Tasks marked with **[P]** can be executed in parallel (different files, no block
 - [ ] T100 Push branch and create pull request for review
 
 **Phase 8 Validation**:
+
 - ✅ Widget lazy-loads (no impact on initial page load)
 - ✅ Message limit enforced (oldest removed when >50)
 - ✅ Bundle size <50KB
@@ -472,29 +493,34 @@ Phase 8 (Polish)
 
 ## Parallel Execution Opportunities
 
-### Within Phase 3 (US1):
+### Within Phase 3 (US1)
+
 - **Stream 1** (Component Logic): T013-T022 (developer A)
 - **Stream 2** (Styling): T023-T030 (developer B)
 - **Merge**: Both complete before T031 (integration)
 
-### Within Phase 4 (US2):
+### Within Phase 4 (US2)
+
 - **Stream 1** (Backend Mock API): T033-T037 (backend developer)
 - **Stream 2** (MCP Integration): T038-T042 (backend developer or separate)
 - **Stream 3** (Frontend API Integration): T044-T049 (frontend developer, uses mock initially)
 - **Merge**: T043 (replace mock with real MCP)
 
-### Within Phase 5 (US3):
+### Within Phase 5 (US3)
+
 - **Stream 1** (Frontend Errors): T050-T058 (frontend developer)
 - **Stream 2** (Backend Errors): T059-T062 (backend developer)
 - **Stream 3** (Error Styling): T063-T065 (frontend developer or designer)
 - **Merge**: All complete, no blocking dependencies
 
-### Within Phase 6 (US4):
+### Within Phase 6 (US4)
+
 - **Stream 1** (Mobile CSS): T066-T070 (frontend developer)
 - **Stream 2** (Accessibility): T071-T079 (frontend developer)
 - **Merge**: Both complete for full US4 validation
 
-### Cross-Phase Parallelism:
+### Cross-Phase Parallelism
+
 - **Phase 7 (US5: Dark Mode)** can run in parallel with **Phase 3 (US1)** if CSS variables are used from the start
 - **Phase 6 (US4: Mobile)** can run in parallel with **Phase 5 (US3: Errors)** as they touch different concerns
 
@@ -518,6 +544,7 @@ Phase 8 (Polish)
 ## Task Execution Checklist Format Validation
 
 ✅ All tasks follow the required format:
+
 - `- [ ] TaskID [P?] [Story?] Description with file path`
 - Task IDs: T001-T100 (sequential)
 - [P] markers: 40+ parallelizable tasks identified

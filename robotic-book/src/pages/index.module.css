@@ -1,7 +1,199 @@
-/**
- * CSS files with the .module.css suffix will be treated as CSS modules
- * and scoped locally.
- */
+/* ============================================================================
+   HERO SECTION STYLING - Mobile-First Approach
+   ============================================================================ */
+
+/* Hero Container - Mobile (<1024px) */
+.heroContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Hero Text Section - Mobile */
+.heroTextSection {
+  width: 100%;
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background: var(--ifm-background-color);
+  color: var(--ifm-font-color-base);
+  z-index: 2;
+}
+
+.heroHeadline {
+  font-size: 36px;
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 16px;
+  max-width: 100%;
+}
+
+.heroSubheadline {
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.4;
+  margin-bottom: 20px;
+  max-width: 100%;
+  opacity: 0.9;
+}
+
+.heroParagraph {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.6;
+  margin-bottom: 32px;
+  max-width: 100%;
+  opacity: 0.85;
+}
+
+/* CTA Button - Mobile */
+.heroCTA {
+  display: inline-block;
+  padding: 14px 32px;
+  font-size: 18px;
+  font-weight: 700;
+  background: var(--ifm-color-primary);
+  color: white !important;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 200ms ease;
+  min-height: 48px;
+  line-height: 1.2;
+}
+
+.heroCTA:hover {
+  background: var(--ifm-color-primary-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  text-decoration: none;
+  color: white !important;
+}
+
+.heroCTA:active {
+  transform: translateY(0);
+}
+
+/* Hero Image Section - Mobile */
+.heroImageSection {
+  width: 100%;
+  min-height: 50vh;
+  position: relative;
+}
+
+.heroImageContainer {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* LQIP Progressive Loading */
+.heroImagePlaceholder,
+.heroImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: all 300ms ease;
+}
+
+.heroImagePlaceholder {
+  z-index: 1;
+}
+
+.heroImage {
+  z-index: 2;
+}
+
+/* Gradient Overlay for Text Readability */
+.heroImageOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.3) 100%);
+  z-index: 3;
+  pointer-events: none;
+}
+
+/* Dark Mode - Darker overlay */
+[data-theme='dark'] .heroImageOverlay {
+  background: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.6) 100%);
+}
+
+/* ============================================================================
+   DESKTOP LAYOUT (>=1024px)
+   ============================================================================ */
+
+@media (min-width: 1024px) {
+  .heroContainer {
+    flex-direction: row;
+    max-width: 1400px;
+    margin: 0 auto;
+    min-height: 90vh;
+  }
+
+  .heroTextSection {
+    width: 50%;
+    padding: 60px;
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .heroHeadline {
+    font-size: 56px;
+    max-width: 600px;
+  }
+
+  .heroSubheadline {
+    font-size: 24px;
+    max-width: 600px;
+  }
+
+  .heroParagraph {
+    font-size: 18px;
+    max-width: 600px;
+  }
+
+  .heroCTA {
+    min-height: 56px;
+    min-width: 200px;
+    padding: 18px 40px;
+  }
+
+  .heroImageSection {
+    width: 50%;
+    min-height: auto;
+  }
+}
+
+/* ============================================================================
+   ACCESSIBILITY - Reduced Motion
+   ============================================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .heroCTA:hover {
+    transform: none;
+  }
+
+  .heroImagePlaceholder,
+  .heroImage {
+    transition: opacity 300ms ease; /* Keep fade, remove blur transform */
+  }
+}
+
+/* ============================================================================
+   LEGACY STYLES (Remove if not needed)
+   ============================================================================ */
 
 .heroBanner {
   padding: 4rem 0;
