@@ -89,18 +89,17 @@
 .heroImageContainer {
   position: relative;
   width: 100%;
-  height: 100%;
+  min-height: 300px;
   overflow: hidden;
 }
 
 /* LQIP Progressive Loading */
 .heroImagePlaceholder,
 .heroImage {
-  position: absolute;
-  top: 0;
-  left: 0;
+  position: relative;
   width: 100%;
-  height: 100%;
+  height: auto;
+  min-height: 300px;
   object-fit: cover;
   transition: all 300ms ease;
 }
@@ -172,6 +171,22 @@
 
   .heroImageSection {
     width: 50%;
+    min-height: auto;
+  }
+
+  /* T006: Desktop override for heroImageContainer */
+  .heroImageContainer {
+    height: 100%;
+    min-height: auto;
+  }
+
+  /* T007: Desktop override for heroImage */
+  .heroImagePlaceholder,
+  .heroImage {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
     min-height: auto;
   }
 }
