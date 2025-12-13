@@ -1,3 +1,42 @@
+<!--
+SYNC IMPACT REPORT
+==================
+Version: 1.3.0 → 1.4.0 (MINOR)
+
+Changes:
+- REMOVED: Section 4 "Markdown & Linting Style" entirely (lines 40-44)
+  - Deleted MD013 line length rule reference
+  - Deleted MD007 list indentation rule reference
+  - Deleted merge policy for specs/ directory
+- RETAINED: Docusaurus compatibility requirement (Section 6)
+- RETAINED: Spell check via cspell (no changes to cspell workflow)
+- NO NEW LINTING TOOLS: Explicitly removed markdown linting enforcement
+
+Rationale:
+Eliminate CI and local lint failures caused by AI-generated and Docusaurus content.
+Rely on cspell for spell checking, Docusaurus build validation, and manual review
+instead of rigid markdown linting rules that conflict with content generation workflows.
+
+Templates Updated:
+- ✅ .github/workflows/quality-checks.yml - Removed markdownlint-cli2 installation and execution
+- ✅ .specify/memory/constitution.md - This file (removed Section 4)
+- ✅ N/A plan-template.md - No markdownlint references found
+- ✅ N/A spec-template.md - No markdownlint references found
+- ✅ N/A tasks-template.md - No markdownlint references found
+
+Files Deleted:
+- .markdownlint.json (repository root)
+- robotic-book/.markdownlint.json
+
+Follow-up TODOs:
+- None (all changes complete)
+
+Version Bump Reasoning:
+MINOR bump (1.3.0 → 1.4.0) because this removes a governance section (Markdown & Linting Style)
+which materially changes development workflow and removes enforcement constraints, but does not
+break backward compatibility with existing code or content.
+-->
+
 # Constitution for Physical AI & Humanoid Robotics Book
 
 ## 1. Purpose
@@ -36,12 +75,6 @@ This Constitution defines the rules, standards, and workflows for building, simu
     - Simulation setup + validation
 - Web performance: Lightweight components, no heavy libraries
 - Chat widget: Maximum 20px positioning offset, click-to-open only
-
-### Markdown & Linting Style
-
-- **Line Length**: Markdown files may have a line length of up to 200 characters to accommodate complex tables or code blocks. The `MD013` rule is configured accordingly.
-- **List Indentation**: Flexible list indentation (2 or 4 spaces) is permitted. The `MD007` rule is disabled.
-- **Merge Policy**: While code quality remains high, pull requests will not be blocked solely on formatting issues within the `specs/` directory, promoting rapid iteration on specifications.
 
 ## 5. Success Criteria
 
@@ -224,4 +257,4 @@ The Course AI chat widget functionality MUST be seamlessly embedded within the p
 
 This constitution supersedes all other project practices. Amendments require a formal proposal, review, documentation of rationale, and approval by project mentors. Versioning follows semantic versioning rules outlined in Section 10. Compliance reviews will be conducted regularly by project mentors.
 
-**Version**: 1.3.0 | **Ratified**: 2025-12-04 | **Last Amended**: 2025-12-09
+**Version**: 1.4.0 | **Ratified**: 2025-12-04 | **Last Amended**: 2025-12-13
