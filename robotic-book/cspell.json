@@ -1,0 +1,30 @@
+{
+  "version": "0.2",
+  "language": "en",
+  "dictionaries": ["custom-terms", "markdown"],
+  "dictionaryDefinitions": [
+    {
+      "name": "custom-terms",
+      "path": "./cspell-words.txt",
+      "addWords": true
+    }
+  ],
+  "ignorePaths": [
+    "node_modules",
+    "build",
+    "specs",
+    "robotic-book/.docusaurus"
+  ],
+  "ignoreWords": [
+    "humanoid",
+    "gazebo",
+    "qdrant",
+    "rag",
+    "LangChain",
+    "PyTorch",
+    "CLI",
+    "API"
+  ],
+  "enableFiletypes": [".md", ".mdx"],
+  "useGitignore": true
+}
