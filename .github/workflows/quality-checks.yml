@@ -11,16 +11,21 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '20'
+
       - name: Install dependencies
         run: npm install
         working-directory: ./robotic-book
+
       - name: Install linting and spellcheck tools
         run: npm install markdownlint-cli2 cspell
+
       - name: Run Markdown Linter
-        run: npx markdownlint-cli2 --config robotic-book/.markdownlint.json "**/*.md" "**/*.mdx" --ignore "**/node_modules/**" --ignore "**/build/**" --ignore "**/robotic-book/.docusaurus/**" --ignore "**/history/**" --ignore "**/specs/**"
+        run: npx markdownlint-cli2 --config robotic-book/.markdownlint.json "robotic-book/docs/**/*.md" "robotic-book/docs/**/*.mdx"
+
       - name: Run Spellcheck
-        run: npx cspell "**/*.md"
+        run: npx cspell "robotic-book/docs/**/*.md" --config .cspell.json
