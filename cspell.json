@@ -1,0 +1,16 @@
+{
+  "version": "0.2",
+  "language": "en",
+  "ignorePaths": [
+    "node_modules/**",
+    "build/**",
+    ".docusaurus/**",
+    "package-lock.json",
+    "history/**",
+    "specs/**"
+  ],
+  "ignoreRegExpList": [
+    "/\\b[A-Z]{2,}\\b/g",
+    "/0x[0-9a-fA-F]+/g"
+  ]
+}

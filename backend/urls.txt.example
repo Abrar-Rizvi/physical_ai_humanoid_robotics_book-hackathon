@@ -1,0 +1,13 @@
+# Sample Docusaurus URLs for testing
+# Lines starting with # are comments and will be ignored
+# Blank lines are also ignored
+
+# Official Docusaurus documentation (for testing)
+https://docusaurus.io/docs
+https://docusaurus.io/docs/installation
+https://docusaurus.io/docs/configuration
+
+# Add your actual book URLs below (one per line)
+# https://your-book.com/docs/intro
+# https://your-book.com/docs/chapter1
+# https://your-book.com/docs/chapter2
