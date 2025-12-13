@@ -1,15 +1,16 @@
 {
   "default": true,
-
   "MD013": {
-    "line_length": 400,
-    "heading_line_length": 400,
-    "code_block_line_length": 600,
-    "tables": false
+    "line_length": 200,
+    "ignore_code_blocks": true,
+    "ignore_tables": true,
+    "ignore_urls": true
   },
-
-  "MD033": false,
-  "MD034": false,
-  "MD041": false
+  "MD007": false,
+  "MD030": {
+    "list_marker_space": 4
+  },
+  "MD024": {
+    "allow_different_levels": true
+  }
 }
-
