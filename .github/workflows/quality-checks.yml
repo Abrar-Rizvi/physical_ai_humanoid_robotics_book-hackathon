@@ -25,4 +25,4 @@ jobs:
         run: npm install cspell
 
       - name: Run Spellcheck
-        run: npx cspell "robotic-book/docs/**/*.md" --config .cspell.json
+      - run: npx cspell "robotic-book/docs/**/*.md" --config robotic-book/.cspell.json
