@@ -21,6 +21,6 @@ jobs:
       - name: Install linting and spellcheck tools
         run: npm install markdownlint-cli2 cspell
       - name: Run Markdown Linter
-        run: npx markdownlint-cli2 --config .markdownlint.json "**/*.md" "**/*.mdx" --ignore "**/node_modules/**" --ignore "**/build/**" --ignore "**/robotic-book/.docusaurus/**" --ignore "**/history/**" --ignore "**/specs/**"
+        run: npx markdownlint-cli2 --config robotic-book/.markdownlint.json "**/*.md" "**/*.mdx" --ignore "**/node_modules/**" --ignore "**/build/**" --ignore "**/robotic-book/.docusaurus/**" --ignore "**/history/**" --ignore "**/specs/**"
       - name: Run Spellcheck
         run: npx cspell "**/*.md"
