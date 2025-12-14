@@ -499,7 +499,7 @@ def extract_docusaurus_content(soup: BeautifulSoup, url: str, logger: logging.Lo
     text = content_elem.get_text(separator='\n', strip=True)
 
     # Preprocess text
-    text = preprocess_text(logger)
+    text = preprocess_text(text, logger)
 
     # Check for code blocks and images
     has_code = bool(content_elem.select('pre, code'))
