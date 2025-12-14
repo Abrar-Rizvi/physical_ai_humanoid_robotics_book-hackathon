@@ -1,0 +1,111 @@
+openapi: 3.0.0
+info:
+  title: Qdrant Retrieval API
+  description: API for testing and validating Qdrant retrieval functionality
+  version: 1.0.0
+paths:
+  /search:
+    post:
+      summary: Perform similarity search in Qdrant
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                query_vector:
+                  type: array
+                  items:
+                    type: number
+                  description: The embedding vector to search for
+                top_k:
+                  type: integer
+                  default: 5
+                  description: Number of results to return
+                collection_name:
+                  type: string
+                  description: Name of the Qdrant collection to search
+                query_filter:
+                  type: object
+                  description: Optional filter conditions for the search
+      responses:
+        '200':
+          description: Successful search results
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  results:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          description: ID of the matching embedding
+                        score:
+                          type: number
+                          format: float
+                          description: Similarity score
+                        payload:
+                          type: object
+                          description: Metadata associated with the embedding
+        '400':
+          description: Invalid request parameters
+        '500':
+          description: Server error
+  /validate-pipeline:
+    post:
+      summary: Validate the end-to-end retrieval pipeline
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                query_text:
+                  type: string
+                  description: Original text used for validation
+                expected_ids:
+                  type: array
+                  items:
+                    type: string
+                  description: Expected embedding IDs that should be retrieved
+                query_vector:
+                  type: array
+                  items:
+                    type: number
+                  description: The embedding vector to search for
+                top_k:
+                  type: integer
+                  default: 5
+                  description: Number of results to return for validation
+      responses:
+        '200':
+          description: Pipeline validation result
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  accuracy_score:
+                    type: number
+                    format: float
+                    description: Percentage of correct matches (0-1)
+                  response_time:
+                    type: number
+                    format: float
+                    description: Time taken for the query in seconds
+                  validation_passed:
+                    type: boolean
+                    description: Whether the validation met accuracy threshold
+                  details:
+                    type: object
+                    description: Additional validation details
+        '400':
+          description: Invalid request parameters
+        '500':
+          description: Server error
