@@ -7,10 +7,11 @@ class Settings(BaseSettings):
     """Configuration settings for the RAG agent backend"""
 
     openai_api_key: str = os.getenv("OPENAI_API_KEY", "")
+    cohere_api_key: str = os.getenv("COHERE_API_KEY", "")
     qdrant_url: str = os.getenv("QDRANT_URL", "http://localhost:6333")
     qdrant_api_key: Optional[str] = os.getenv("QDRANT_API_KEY")
     qdrant_collection_name: str = os.getenv("QDRANT_COLLECTION_NAME", "book_embeddings")
-    embedding_model: str = os.getenv("EMBEDDING_MODEL", "text-embedding-3-small")
+    embedding_model: str = os.getenv("EMBEDDING_MODEL", "embed-english-v3.0")  # Cohere model for 1024-dim vectors
 
     # Additional settings
     chunk_size_tokens: int = int(os.getenv("CHUNK_SIZE_TOKENS", "400"))
