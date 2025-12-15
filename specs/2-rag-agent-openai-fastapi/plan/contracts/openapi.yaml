@@ -1,0 +1,266 @@
+# OpenAPI Specification: RAG Agent Backend
+
+openapi: 3.0.3
+info:
+  title: RAG Agent API
+  description: API for RAG-powered AI Agent with context retrieval and response generation
+  version: 1.0.0
+servers:
+  - url: http://localhost:8000
+    description: Local development server
+
+paths:
+  /health:
+    get:
+      summary: Health check endpoint
+      description: Returns the health status of the RAG agent system
+      responses:
+        '200':
+          description: Health status information
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HealthStatus'
+              example:
+                status: "healthy"
+                timestamp: "2025-12-15T10:30:00Z"
+                services:
+                  qdrant: "connected"
+                  openai: "connected"
+                metrics:
+                  response_time_ms: 150
+                  uptime_seconds: 3600
+
+  /query:
+    post:
+      summary: Process user query with RAG
+      description: Accepts a user query, retrieves relevant context, and generates a grounded response
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/QueryRequest'
+            example:
+              query: "What are the key principles of humanoid robotics?"
+              parameters:
+                temperature: 0.7
+                top_k: 5
+      responses:
+        '200':
+          description: Generated response with source attribution
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+              example:
+                answer: "The key principles of humanoid robotics include..."
+                sources:
+                  - id: "doc-123"
+                    content_snippet: "Humanoid robotics focuses on creating robots with human-like form and behavior..."
+                    confidence: 0.95
+                query_id: "query-456"
+                timestamp: "2025-12-15T10:30:05Z"
+                status: "success"
+        '400':
+          description: Invalid request parameters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+components:
+  schemas:
+    QueryRequest:
+      type: object
+      required:
+        - query
+      properties:
+        query:
+          type: string
+          description: The user's query text
+          example: "What are the key principles of humanoid robotics?"
+        parameters:
+          type: object
+          properties:
+            temperature:
+              type: number
+              minimum: 0
+              maximum: 1
+              description: Controls randomness in response (0.0-1.0)
+              example: 0.7
+            max_tokens:
+              type: integer
+              minimum: 1
+              description: Maximum tokens in response
+              example: 500
+            top_k:
+              type: integer
+              minimum: 1
+              maximum: 10
+              description: Number of context documents to retrieve
+              example: 5
+
+    RetrievedContext:
+      type: object
+      required:
+        - documents
+      properties:
+        documents:
+          type: array
+          items:
+            type: object
+            required:
+              - id
+              - content
+              - score
+            properties:
+              id:
+                type: string
+                description: Unique identifier for the document
+                example: "doc-123"
+              content:
+                type: string
+                description: The text content of the fragment
+                example: "Humanoid robotics focuses on creating robots with human-like form and behavior..."
+              metadata:
+                type: object
+                properties:
+                  source:
+                    type: string
+                    description: Source of the document
+                    example: "humanoid_robots_chapter1.md"
+                  title:
+                    type: string
+                    description: Title of the document
+                    example: "Introduction to Humanoid Robotics"
+                  url:
+                    type: string
+                    description: URL of the document
+                    example: "https://example.com/docs/humanoid_robots"
+              score:
+                type: number
+                minimum: 0
+                maximum: 1
+                description: Relevance score (0.0-1.0)
+                example: 0.85
+        query_embedding:
+          type: array
+          items:
+            type: number
+          description: Vector representation of the query
+          example: [0.1, 0.3, 0.5, 0.2]
+        retrieval_method:
+          type: string
+          description: Method used for retrieval
+          example: "semantic_search"
+
+    Response:
+      type: object
+      required:
+        - answer
+        - sources
+        - timestamp
+        - status
+      properties:
+        answer:
+          type: string
+          description: The AI-generated response
+          example: "The key principles of humanoid robotics include anthropomorphic design, bipedal locomotion, and human-like interaction capabilities."
+        sources:
+          type: array
+          items:
+            type: object
+            required:
+              - id
+              - content_snippet
+              - confidence
+            properties:
+              id:
+                type: string
+                description: Document ID from which information was derived
+                example: "doc-123"
+              content_snippet:
+                type: string
+                description: Relevant snippet from the source
+                example: "Humanoid robotics focuses on creating robots with human-like form and behavior..."
+              confidence:
+                type: number
+                minimum: 0
+                maximum: 1
+                description: Confidence level (0.0-1.0)
+                example: 0.95
+        query_id:
+          type: string
+          description: Unique identifier for the query
+          example: "query-456"
+        timestamp:
+          type: string
+          format: date-time
+          description: ISO 8601 timestamp of response generation
+          example: "2025-12-15T10:30:05Z"
+        status:
+          type: string
+          enum: [success, no_context, error]
+          description: Response status
+          example: "success"
+
+    HealthStatus:
+      type: object
+      required:
+        - status
+        - timestamp
+      properties:
+        status:
+          type: string
+          enum: [healthy, degraded, unhealthy]
+          description: Overall service status
+          example: "healthy"
+        timestamp:
+          type: string
+          format: date-time
+          description: ISO 8601 timestamp of status check
+          example: "2025-12-15T10:30:00Z"
+        services:
+          type: object
+          properties:
+            qdrant:
+              type: string
+              description: Qdrant connection status
+              example: "connected"
+            openai:
+              type: string
+              description: OpenAI API connection status
+              example: "connected"
+        metrics:
+          type: object
+          properties:
+            response_time_ms:
+              type: number
+              description: Average response time in milliseconds
+              example: 150
+            uptime_seconds:
+              type: number
+              description: Service uptime in seconds
+              example: 3600
+
+    ErrorResponse:
+      type: object
+      required:
+        - error
+        - message
+      properties:
+        error:
+          type: string
+          description: Error type
+          example: "invalid_query"
+        message:
+          type: string
+          description: Error description
+          example: "Query parameter is required and cannot be empty"

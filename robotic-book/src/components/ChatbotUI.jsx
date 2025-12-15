@@ -18,35 +18,39 @@ const ChatbotUI = () => {
     setMessages((prevMessages) => [...prevMessages, userMessage]);
     setInput('');
 
-    // Simulate API call to backend
-    const simulatedBackendResponse = `This is a simulated response to your query: "${input}".`;
-    const botMessage = { text: simulatedBackendResponse, sender: 'bot' };
-    setTimeout(() => {
-      setMessages((prevMessages) => [...prevMessages, botMessage]);
-    }, 1000);
-
     // In a real application, you would make an actual API call:
-    /*
     try {
-      const response = await fetch('http://localhost:8000/api/v1/chat', {
+      const response = await fetch('http://127.0.0.1:8000/query', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          user_query: input,
-          retrieved_content: [], // This would be populated by a query endpoint first
-          user_session_id: 'some-session-id',
+          query: input,
+          context: "", // Context from selected text could be added here
+          session_id: 'session-' + Date.now(), // Generate a simple session ID
         }),
       });
       const data = await response.json();
-      const botMessage = { text: data.response_text, sender: 'bot' };
+      const botMessage = {
+        text: data.status === 'error' ? data.answer || 'Sorry, something went wrong.' : data.answer,
+        sender: 'bot'
+      };
       setMessages((prevMessages) => [...prevMessages, botMessage]);
     } catch (error) {
       console.error('Error sending message:', error);
       const errorMessage = { text: 'Sorry, something went wrong.', sender: 'bot' };
       setMessages((prevMessages) => [...prevMessages, errorMessage]);
     }
+
+    // Comment out the simulated response code:
+    /*
+    // Simulate API call to backend
+    const simulatedBackendResponse = `This is a simulated response to your query: "${input}".`;
+    const botMessage = { text: simulatedBackendResponse, sender: 'bot' };
+    setTimeout(() => {
+      setMessages((prevMessages) => [...prevMessages, botMessage]);
+    }, 1000);
     */
   };
 

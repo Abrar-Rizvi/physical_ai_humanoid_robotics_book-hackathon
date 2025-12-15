@@ -1,0 +1,249 @@
+# RAG Chatbot API Specification
+# This is a simplified OpenAPI specification for the RAG Chatbot backend API
+# Used for frontend-backend communication
+
+openapi: 3.0.0
+info:
+  title: RAG Chatbot API
+  description: API for RAG (Retrieval-Augmented Generation) chatbot backend
+  version: 1.0.0
+  contact:
+    name: RAG Chatbot Development Team
+    email: team@example.com
+
+servers:
+  - url: http://localhost:8000
+    description: Local development server
+  - url: https://api.rag-chatbot.example.com
+    description: Production server
+
+paths:
+  /query:
+    post:
+      summary: Process a user query using the RAG agent
+      description: Sends a user query to the RAG agent which retrieves relevant context and generates a response
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ChatQuery'
+      responses:
+        '200':
+          description: Successful response from the RAG agent
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ChatResponse'
+        '400':
+          description: Bad request - invalid input parameters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      tags:
+        - Query Processing
+
+  /health:
+    get:
+      summary: Health check for the RAG agent backend
+      description: Returns the health status of the backend services
+      responses:
+        '200':
+          description: Health status information
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HealthResponse'
+      tags:
+        - Health
+
+components:
+  schemas:
+    ChatQuery:
+      type: object
+      required:
+        - query
+      properties:
+        query:
+          type: string
+          description: The user's question or query
+          example: "What is the main concept of this chapter?"
+        context:
+          type: string
+          description: Optional context, such as selected text from the document
+          example: "The chapter discusses the fundamentals of machine learning, including supervised and unsupervised learning techniques..."
+        session_id:
+          type: string
+          description: Optional session identifier to maintain conversation context
+          example: "session-12345"
+        metadata:
+          $ref: '#/components/schemas/QueryMetadata'
+
+    QueryMetadata:
+      type: object
+      properties:
+        page_url:
+          type: string
+          description: URL of the page where the query originated
+          example: "https://example.com/book/chapter-1"
+        selected_text_position:
+          type: object
+          properties:
+            start:
+              type: integer
+              description: Start position of selected text
+            end:
+              type: integer
+              description: End position of selected text
+        timestamp:
+          type: string
+          format: date-time
+          description: ISO timestamp of query submission
+        user_agent:
+          type: string
+          description: Information about the user's browser/device
+
+    ChatResponse:
+      type: object
+      required:
+        - response
+        - sources
+        - session_id
+      properties:
+        response:
+          type: string
+          description: The AI-generated response to the user's query
+          example: "The main concept of this chapter is the fundamentals of machine learning, which includes supervised and unsupervised learning techniques..."
+        sources:
+          type: array
+          items:
+            $ref: '#/components/schemas/SourceReference'
+          description: List of sources used to generate the response
+        session_id:
+          type: string
+          description: Session identifier for conversation context
+          example: "session-12345"
+        confidence:
+          type: number
+          format: float
+          minimum: 0
+          maximum: 1
+          description: Confidence score for the response (0-1)
+          example: 0.89
+        metadata:
+          $ref: '#/components/schemas/ResponseMetadata'
+
+    SourceReference:
+      type: object
+      required:
+        - id
+        - title
+        - content
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the source
+          example: "doc-123"
+        title:
+          type: string
+          description: Title or heading of the source
+          example: "Chapter 1: Fundamentals of Machine Learning"
+        content:
+          type: string
+          description: Snippet of content from the source
+          example: "The chapter discusses the fundamentals of machine learning, including supervised and unsupervised learning techniques..."
+        url:
+          type: string
+          description: URL to the source document
+          example: "https://example.com/book/chapter-1#section-1"
+        page:
+          type: integer
+          description: Page number if applicable
+          example: 15
+        score:
+          type: number
+          format: float
+          minimum: 0
+          maximum: 1
+          description: Relevance score (0-1)
+          example: 0.95
+
+    ResponseMetadata:
+      type: object
+      properties:
+        processing_time:
+          type: integer
+          description: Time taken to process the query (in milliseconds)
+          example: 2450
+        tokens_used:
+          type: integer
+          description: Number of tokens used in the response
+          example: 120
+        model:
+          type: string
+          description: Name of the model used to generate the response
+          example: "gpt-4"
+        timestamp:
+          type: string
+          format: date-time
+          description: ISO timestamp of response generation
+
+    ErrorResponse:
+      type: object
+      required:
+        - error
+        - code
+      properties:
+        error:
+          type: string
+          description: Error message describing what went wrong
+          example: "Invalid query format"
+        code:
+          type: string
+          description: Error code
+          example: "INVALID_QUERY"
+        details:
+          type: object
+          description: Additional error details
+          example: {"message": "Query must be between 1 and 2000 characters"}
+
+    HealthResponse:
+      type: object
+      required:
+        - status
+        - services
+      properties:
+        status:
+          type: string
+          description: Overall health status
+          enum: [healthy, degraded, unhealthy]
+          example: "healthy"
+        services:
+          type: object
+          description: Status of individual services
+          properties:
+            qdrant:
+              type: string
+              enum: [healthy, degraded, unhealthy]
+              description: Qdrant vector database status
+            openai:
+              type: string
+              enum: [healthy, degraded, unhealthy]
+              description: OpenAI API status
+            timestamp:
+              type: string
+              format: date-time
+              description: Time of health check
+
+tags:
+  - name: Query Processing
+    description: Endpoints related to processing user queries with the RAG agent
+  - name: Health
+    description: Endpoints for checking system health
