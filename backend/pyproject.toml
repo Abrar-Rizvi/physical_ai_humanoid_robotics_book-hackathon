@@ -1,0 +1,88 @@
+[build-system]
+requires = ["setuptools>=45", "wheel", "setuptools_scm[toml]>=6.2"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "qdrant-retrieval-pipeline"
+description = "Qdrant Retrieval Pipeline Testing - A module for testing and validating RAG pipeline embeddings retrieval"
+readme = "README.md"
+requires-python = ">=3.8"
+keywords = ["qdrant", "retrieval", "rag", "embeddings", "testing", "validation"]
+license = {text = "MIT"}
+authors = [
+    {name = "Your Name", email = "your.email@example.com"},
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+]
+dynamic = ["version"]
+
+dependencies = [
+    "qdrant-client>=1.16.0",
+    "python-dotenv>=1.0.0",
+    "numpy>=1.21.0",
+    "requests>=2.25.0",
+    "cohere>=5.0.0",
+    "langchain-text-splitters>=1.0.0",
+    "tiktoken>=0.12.0",
+    "beautifulsoup4>=4.12.0",
+    "lxml>=4.9.0",
+    "pytest>=7.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "black>=22.0.0",
+    "flake8>=4.0.0",
+    "mypy>=0.950",
+    "pytest>=7.0.0",
+    "pytest-cov>=3.0.0",
+]
+test = [
+    "pytest>=7.0.0",
+    "pytest-mock>=3.10.0",
+    "pytest-asyncio>=0.21.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/Abrar-Rizvi/physical_ai_humanoid_robotics_book-hackathon"
+Repository = "https://github.com/Abrar-Rizvi/physical_ai_humanoid_robotics_book-hackathon"
+
+[project.scripts]
+qdrant-retrieve = "backend.cli.retrieve_cli:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["backend*"]
+
+[tool.setuptools.dynamic]
+version = {attr = "backend.__version__"}
+
+[tool.black]
+line-length = 88
+target-version = ['py38']
+include = '\.pyi?$'
+
+[tool.mypy]
+python_version = "3.8"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+
+[tool.pytest.ini_options]
+testpaths = ["backend/tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+markers = [
+    "integration: marks tests as integration tests",
+    "unit: marks tests as unit tests",
+    "slow: marks tests as slow",
+]
