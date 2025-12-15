@@ -53,7 +53,7 @@ export default function CourseChatWidget() {
     setState(prev => ({ ...prev, isOpen: !prev.isOpen }));
   };
 
-  // T019: Send message function with mock response (MVP - no API call yet)
+  // T019: Send message function with real API call
   const sendMessage = async () => {
     if (!state.inputValue.trim() || state.isLoading) return;
 
@@ -73,12 +73,34 @@ export default function CourseChatWidget() {
       errorMessage: null,
     }));
 
-    // Mock response for MVP (Phase 3)
-    // API integration will be added in Phase 4 (US2)
-    setTimeout(() => {
+    try {
+      // Call the real backend API
+      const response = await fetch('http://127.0.0.1:8000/query', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          query: userMessage.text,
+          parameters: {
+            max_tokens: 500,
+            temperature: 0.7,
+            top_k: 5
+          }
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error(`API request failed with status ${response.status}`);
+      }
+
+      const data = await response.json();
+
       const botMessage: Message = {
         id: generateId(),
-        text: `This is a mock response to: "${userMessage.text}". The AI backend will be integrated in Phase 4.`,
+        text: data.status === 'error'
+          ? (data.answer || 'Sorry, something went wrong.')
+          : data.answer,
         sender: 'bot',
         timestamp: Date.now(),
       };
@@ -90,7 +112,24 @@ export default function CourseChatWidget() {
         ).concat(botMessage),
         isLoading: false,
       }));
-    }, 1000);
+    } catch (error) {
+      console.error('Error sending message to backend:', error);
+
+      const errorMessage: Message = {
+        id: generateId(),
+        text: 'Sorry, I couldn\'t connect to the AI backend. Please make sure the backend server is running.',
+        sender: 'bot',
+        timestamp: Date.now(),
+      };
+
+      setState(prev => ({
+        ...prev,
+        messages: prev.messages.map(msg =>
+          msg.id === userMessage.id ? { ...msg, status: 'error' } : msg
+        ).concat(errorMessage),
+        isLoading: false,
+      }));
+    }
   };
 
   // T022: Keyboard support (Enter to send, Escape to close)
