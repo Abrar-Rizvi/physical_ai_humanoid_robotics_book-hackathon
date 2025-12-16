@@ -15,7 +15,7 @@
 // export default Root;
 
 import React from 'react';
-// import RAGChatWidget from '@site/src/components/RAGChatWidget';
+
 import ChatbotUI from '../components/ChatbotUI';
 
 export default function Root({ children }: { children: React.ReactNode }) {
@@ -23,7 +23,7 @@ export default function Root({ children }: { children: React.ReactNode }) {
     <>
     
       {children}
-      {/* <RAGChatWidget /> */}
+     
       <ChatbotUI />
     </>
   );

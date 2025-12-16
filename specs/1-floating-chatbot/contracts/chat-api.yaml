@@ -1,0 +1,162 @@
+# API Contracts: Floating Chatbot UI Component
+
+**Feature**: Floating Chatbot UI Component
+**Date**: 2025-12-17
+
+## Overview
+This document defines the API contracts for the floating chatbot UI component, including endpoints for message handling, session management, and RAG integration.
+
+## Base URL
+All API endpoints are relative to the RAG backend service (to be configured per environment).
+
+## Common Headers
+- `Content-Type: application/json`
+- `Accept: application/json`
+
+## Endpoints
+
+### POST /api/chat/send
+Send a message to the AI assistant and receive a response.
+
+#### Request
+```json
+{
+  "message": "Hello, how can you help me?",
+  "sessionId": "session-123",
+  "timestamp": "2025-12-17T10:30:00Z"
+}
+```
+
+#### Response (Success 200)
+```json
+{
+  "id": "msg-456",
+  "message": "Hello! I can help you with information about humanoid robotics and AI.",
+  "sender": "assistant",
+  "timestamp": "2025-12-17T10:30:01Z",
+  "sessionId": "session-123",
+  "status": "delivered"
+}
+```
+
+#### Response (Error 400)
+```json
+{
+  "error": "Message is required",
+  "code": "INVALID_INPUT"
+}
+```
+
+#### Response (Error 500)
+```json
+{
+  "error": "Failed to process message",
+  "code": "INTERNAL_ERROR"
+}
+```
+
+### GET /api/chat/session/{sessionId}
+Get the details of a chat session including message history.
+
+#### Response (Success 200)
+```json
+{
+  "id": "session-123",
+  "isOpen": true,
+  "messages": [
+    {
+      "id": "msg-123",
+      "content": "Hello, how can you help me?",
+      "sender": "user",
+      "timestamp": "2025-12-17T10:30:00Z",
+      "status": "read"
+    },
+    {
+      "id": "msg-456",
+      "content": "Hello! I can help you with information about humanoid robotics and AI.",
+      "sender": "assistant",
+      "timestamp": "2025-12-17T10:30:01Z",
+      "status": "delivered"
+    }
+  ],
+  "lastActive": "2025-12-17T10:30:01Z",
+  "isOnline": true,
+  "createdAt": "2025-12-17T10:30:00Z"
+}
+```
+
+### POST /api/chat/session
+Create a new chat session.
+
+#### Request
+```json
+{
+  "userId": "user-789",
+  "initialMessage": null
+}
+```
+
+#### Response (Success 201)
+```json
+{
+  "id": "session-456",
+  "isOpen": true,
+  "messages": [],
+  "lastActive": "2025-12-17T10:30:00Z",
+  "isOnline": true,
+  "createdAt": "2025-12-17T10:30:00Z"
+}
+```
+
+### GET /api/chat/status
+Check the status of the AI service.
+
+#### Response (Success 200)
+```json
+{
+  "isOnline": true,
+  "service": "RAG Chatbot",
+  "version": "1.0.0",
+  "lastPing": "2025-12-17T10:30:00Z"
+}
+```
+
+### DELETE /api/chat/session/{sessionId}
+Close and optionally delete a chat session.
+
+#### Response (Success 200)
+```json
+{
+  "id": "session-123",
+  "closedAt": "2025-12-17T10:45:00Z",
+  "messageCount": 12
+}
+```
+
+## Error Response Format
+All error responses follow this structure:
+
+```json
+{
+  "error": "Descriptive error message",
+  "code": "ERROR_CODE",
+  "timestamp": "2025-12-17T10:30:00Z"
+}
+```
+
+## Common Error Codes
+- `INVALID_INPUT`: Request data is invalid or missing required fields
+- `SESSION_NOT_FOUND`: Specified session does not exist
+- `SERVICE_UNAVAILABLE`: AI service is temporarily unavailable
+- `RATE_LIMIT_EXCEEDED`: Too many requests from this client
+- `INTERNAL_ERROR`: Unexpected server error occurred
+
+## Message Validation
+- Messages must be between 1 and 2000 characters
+- Messages must not contain offensive content (validated server-side)
+- Messages are limited to text content (no file uploads in initial implementation)
+
+## Security
+- All endpoints require appropriate authentication (to be implemented based on deployment requirements)
+- Rate limiting: Maximum 10 requests per minute per IP address
+- Content filtering: Messages are checked for appropriate content before processing

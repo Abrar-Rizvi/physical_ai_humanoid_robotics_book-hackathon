@@ -1,6 +1,7 @@
 // robotic-book/src/components/ChatbotUI.jsx
 import React, { useState } from 'react';
-import styles from './ChatbotUI.module.css'; // Assuming you'll create a CSS module
+import { MessageCircle, X } from 'lucide-react';
+import styles from './ChatbotUI.module.css';
 
 const ChatbotUI = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -14,7 +15,12 @@ const ChatbotUI = () => {
   const handleSendMessage = async () => {
     if (input.trim() === '') return;
 
-    const userMessage = { text: input, sender: 'user' };
+    const userMessage = {
+      id: Date.now().toString(),
+      text: input,
+      sender: 'user',
+      timestamp: new Date()
+    };
     setMessages((prevMessages) => [...prevMessages, userMessage]);
     setInput('');
 
@@ -33,39 +39,71 @@ const ChatbotUI = () => {
       });
       const data = await response.json();
       const botMessage = {
+        id: (Date.now() + 1).toString(),
         text: data.status === 'error' ? data.answer || 'Sorry, something went wrong.' : data.answer,
         sources: data.sources || [],
-        sender: 'bot'
+        sender: 'assistant',
+        timestamp: new Date()
       };
       setMessages((prevMessages) => [...prevMessages, botMessage]);
     } catch (error) {
       console.error('Error sending message:', error);
-      const errorMessage = { text: 'Sorry, something went wrong.', sender: 'bot' };
+      const errorMessage = {
+        id: (Date.now() + 1).toString(),
+        text: 'Sorry, something went wrong.',
+        sender: 'assistant',
+        timestamp: new Date()
+      };
       setMessages((prevMessages) => [...prevMessages, errorMessage]);
     }
-
-    // Comment out the simulated response code:
-    /*
-    // Simulate API call to backend
-    const simulatedBackendResponse = `This is a simulated response to your query: "${input}".`;
-    const botMessage = { text: simulatedBackendResponse, sender: 'bot' };
-    setTimeout(() => {
-      setMessages((prevMessages) => [...prevMessages, botMessage]);
-    }, 1000);
-    */
   };
 
   return (
     <div className={styles.chatbotContainer}>
-      <button className={styles.chatbotToggle} onClick={toggleChatbot}>
-        {isOpen ? 'Close Chat' : 'Open Chat'}
-      </button>
-
-      {isOpen && (
+      {!isOpen ? (
+        // Floating Chatbot Button (Closed State)
+        <button
+          className={styles.floatingButton}
+          onClick={toggleChatbot}
+          aria-label="Open AI Companion chat"
+        >
+          <MessageCircle
+            size={24}
+            color="white"
+            strokeWidth={2}
+            className={styles.chatIcon}
+          />
+        </button>
+      ) : (
+        // Chat Window (Open State)
         <div className={styles.chatWindow}>
+          {/* Header Section */}
+          <div className={styles.header}>
+            <div className={styles.headerContent}>
+              <div className={styles.statusContainer}>
+                <span className={styles.onlineDot}></span>
+                <div>
+                  <div className={styles.title}>AI Companion</div>
+                  <div className={styles.subtitle}>Online • Powered by RAG</div>
+                </div>
+              </div>
+              <button
+                className={styles.closeButton}
+                onClick={toggleChatbot}
+                aria-label="Close chat"
+              >
+                <X size={20} color="white" />
+              </button>
+            </div>
+          </div>
+
+          {/* Messages Container */}
           <div className={styles.messagesContainer}>
             {messages.map((msg, index) => (
-              <div key={index} className={`${styles.message} ${styles[msg.sender]}`}>
+              <div
+                key={msg.id}
+                className={`${styles.message} ${msg.sender === 'user' ? styles.userMessage : styles.assistantMessage}`}
+              >
                 <div className={styles.messageText}>{msg.text}</div>
                 {msg.sources && msg.sources.length > 0 && (
                   <div className={styles.sourcesContainer}>
@@ -125,6 +163,8 @@ const ChatbotUI = () => {
               </div>
             ))}
           </div>
+
+          {/* Input Area */}
           <div className={styles.inputContainer}>
             <input
               type="text"
@@ -135,10 +175,14 @@ const ChatbotUI = () => {
                   handleSendMessage();
                 }
               }}
-              placeholder="Ask me about the book..."
+              placeholder="Type a message..."
               className={styles.chatInput}
             />
-            <button onClick={handleSendMessage} className={styles.sendButton}>
+            <button
+              onClick={handleSendMessage}
+              className={styles.sendButton}
+              aria-label="Send message"
+            >
               Send
             </button>
           </div>
