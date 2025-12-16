@@ -161,6 +161,18 @@
   text-decoration: underline;
 }
 
+.source-content-preview {
+  font-size: 11px;
+  color: var(--ifm-color-emphasis-600, #6c757d);
+  margin-top: 4px;
+  padding: 4px 6px;
+  background: var(--ifm-color-emphasis-100, #f1f3f5);
+  border-radius: 4px;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 /* Error message */
 .chat-error {
   background: #f8d7da;
@@ -268,4 +280,9 @@ html[data-theme='dark'] .message-sources {
 
 html[data-theme='dark'] .message-sources a {
   color: var(--ifm-color-primary, #25c2a0);
+}
+
+html[data-theme='dark'] .source-content-preview {
+  color: var(--ifm-color-emphasis-400, #adb5bd);
+  background: var(--ifm-color-emphasis-700, #303336);
 }

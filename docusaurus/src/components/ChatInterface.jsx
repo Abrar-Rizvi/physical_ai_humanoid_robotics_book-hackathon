@@ -260,18 +260,50 @@ const ChatInterface = () => {
                           Sources:
                         </summary>
                         <ul aria-label="Sources for this response">
-                          {message.sources.map((source, idx) => (
-                            <li key={idx}>
-                              <a
-                                href={source.url}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                aria-label={`Source: ${source.title}`}
-                              >
-                                {source.title}
-                              </a>
-                            </li>
-                          ))}
+                          {message.sources.map((source, idx) => {
+                            // Handle different possible source formats
+                            let title = 'Source';
+                            let url = null;
+                            let content = null;
+
+                            if (typeof source === 'string') {
+                              // If source is just a string
+                              title = source.length > 50 ? source.substring(0, 50) + '...' : source;
+                              content = source;
+                            } else if (typeof source === 'object' && source !== null) {
+                              // If source is an object, try to extract meaningful fields
+                              title = source.title || source.page_title || source.metadata?.title || source.metadata?.source || `Source ${idx + 1}`;
+                              url = source.url || source.metadata?.url || source.metadata?.source_url || null;
+                              content = source.content || source.content_snippet || source.text || null;
+                            } else {
+                              // Fallback for any other type
+                              title = `Source ${idx + 1}`;
+                            }
+
+                            return (
+                              <li key={idx}>
+                                {url ? (
+                                  <a
+                                    href={url}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    aria-label={`Source: ${title}`}
+                                  >
+                                    {title}
+                                  </a>
+                                ) : (
+                                  <span>
+                                    {title}
+                                    {content && (
+                                      <div className="source-content-preview">
+                                        {content.length > 100 ? content.substring(0, 100) + '...' : content}
+                                      </div>
+                                    )}
+                                  </span>
+                                )}
+                              </li>
+                            );
+                          })}
                         </ul>
                       </details>
                     </div>
