@@ -34,6 +34,7 @@ const ChatbotUI = () => {
       const data = await response.json();
       const botMessage = {
         text: data.status === 'error' ? data.answer || 'Sorry, something went wrong.' : data.answer,
+        sources: data.sources || [],
         sender: 'bot'
       };
       setMessages((prevMessages) => [...prevMessages, botMessage]);
@@ -65,7 +66,62 @@ const ChatbotUI = () => {
           <div className={styles.messagesContainer}>
             {messages.map((msg, index) => (
               <div key={index} className={`${styles.message} ${styles[msg.sender]}`}>
-                {msg.text}
+                <div className={styles.messageText}>{msg.text}</div>
+                {msg.sources && msg.sources.length > 0 && (
+                  <div className={styles.sourcesContainer}>
+                    <details className={styles.sourcesDetails}>
+                      <summary className={styles.sourcesSummary}>
+                        Sources:
+                      </summary>
+                      <ul className={styles.sourcesList}>
+                        {msg.sources.map((source, idx) => {
+                          // Handle different possible source formats
+                          let title = 'Source';
+                          let url = null;
+                          let content = null;
+
+                          if (typeof source === 'string') {
+                            // If source is just a string
+                            title = source.length > 50 ? source.substring(0, 50) + '...' : source;
+                            content = source;
+                          } else if (typeof source === 'object' && source !== null) {
+                            // If source is an object, try to extract meaningful fields
+                            title = source.title || source.page_title || source.metadata?.title || source.metadata?.source || `Source ${idx + 1}`;
+                            url = source.url || source.metadata?.url || source.metadata?.source_url || null;
+                            content = source.content || source.content_snippet || source.text || null;
+                          } else {
+                            // Fallback for any other type
+                            title = `Source ${idx + 1}`;
+                          }
+
+                          return (
+                            <li key={idx} className={styles.sourceItem}>
+                              {url ? (
+                                <a
+                                  href={url}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className={styles.sourceLink}
+                                >
+                                  {title}
+                                </a>
+                              ) : (
+                                <span className={styles.sourceText}>
+                                  {title}
+                                  {content && (
+                                    <div className={styles.sourceContentPreview}>
+                                      {content.length > 100 ? content.substring(0, 100) + '...' : content}
+                                    </div>
+                                  )}
+                                </span>
+                              )}
+                            </li>
+                          );
+                        })}
+                      </ul>
+                    </details>
+                  </div>
+                )}
               </div>
             ))}
           </div>

@@ -44,6 +44,77 @@
   max-width: 80%;
 }
 
+.messageText {
+  margin-bottom: 4px;
+}
+
+.sourcesContainer {
+  font-size: 0.8em;
+  color: #666;
+  margin-top: 4px;
+}
+
+.sourcesDetails {
+  margin-top: 4px;
+}
+
+.sourcesSummary {
+  cursor: pointer;
+  color: #007bff;
+  font-weight: 500;
+  list-style: none;
+}
+
+.sourcesSummary::-webkit-details-marker {
+  display: none;
+}
+
+.sourcesSummary::before {
+  content: "▶";
+  display: inline-block;
+  margin-right: 4px;
+  transition: transform 0.2s;
+}
+
+.sourcesDetails[open] .sourcesSummary::before {
+  transform: rotate(90deg);
+}
+
+.sourcesList {
+  margin: 4px 0;
+  padding-left: 16px;
+  list-style: disc;
+}
+
+.sourceItem {
+  margin: 2px 0;
+}
+
+.sourceLink {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.sourceLink:hover {
+  text-decoration: underline;
+}
+
+.sourceText {
+  display: block;
+}
+
+.sourceContentPreview {
+  font-size: 0.75em;
+  color: #888;
+  margin-top: 2px;
+  padding: 2px 4px;
+  background-color: #f5f5f5;
+  border-radius: 3px;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .user {
   background-color: #e0e0e0;
   align-self: flex-end;

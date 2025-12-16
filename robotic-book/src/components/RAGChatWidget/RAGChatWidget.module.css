@@ -1,4 +1,4 @@
-/* RAGChatWidget.module.css */
+RAGChatWidget.module.css
 
 .chatContainer {
   position: fixed;
@@ -123,6 +123,67 @@
   margin-top: 0.5rem; /* mt-2 */
   font-size: 0.75rem; /* text-xs */
   color: #6b7280; /* text-gray-500 */
+}
+
+.sourcesDetails {
+  margin-top: 0.25rem;
+}
+
+.sourcesSummary {
+  cursor: pointer;
+  color: #2563eb; /* blue-600 */
+  font-weight: 500;
+  list-style: none;
+}
+
+.sourcesSummary::-webkit-details-marker {
+  display: none;
+}
+
+.sourcesSummary::before {
+  content: "▶";
+  display: inline-block;
+  margin-right: 0.25rem;
+  transition: transform 0.2s;
+}
+
+.sourcesDetails[open] .sourcesSummary::before {
+  transform: rotate(90deg);
+}
+
+.sourcesList {
+  margin: 0.25rem 0;
+  padding-left: 1rem;
+  list-style: disc;
+}
+
+.sourceItem {
+  margin: 0.125rem 0;
+}
+
+.sourceLink {
+  color: #2563eb; /* blue-600 */
+  text-decoration: none;
+}
+
+.sourceLink:hover {
+  text-decoration: underline;
+}
+
+.sourceText {
+  display: block;
+}
+
+.sourceContentPreview {
+  font-size: 0.6875rem; /* text-xs smaller */
+  color: #6b7280; /* text-gray-500 */
+  margin-top: 0.25rem;
+  padding: 0.125rem 0.25rem;
+  background-color: #f3f4f6; /* gray-100 */
+  border-radius: 0.125rem;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .loadingIndicator {
