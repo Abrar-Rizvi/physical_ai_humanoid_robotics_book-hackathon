@@ -58,10 +58,10 @@ const config: Config = {
       respectPrefersColorScheme: true,
     },
     navbar: {
-      title: 'Physical AI & Humanoid Robotics Book',
+      title: 'Physical AI Book',
       logo: {
         alt: 'My Site Logo',
-        src: 'img/logo.svg',
+        src: 'img/artificial-intelligence.jpg',
       },
       items: [
         {

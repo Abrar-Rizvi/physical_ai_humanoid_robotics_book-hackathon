@@ -30,6 +30,21 @@ const HERO_IMAGE = {
 function HomepageHeader() {
   return (
     <header className={styles.heroContainer}>
+      <div className={styles.heroVideoSection}>
+        <div className={styles.heroVideoContainer}>
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            poster="/img/hero-robot.jpg"
+            className={styles.heroVideo}
+          >
+            <source src="/video/hero-book.mp4" type="video/mp4" />
+          </video>
+        </div>
+      </div>
+
       <div className={styles.heroTextSection}>
         <Heading as="h1" className={styles.heroHeadline}>
           {HERO_CONTENT.headline}
@@ -43,18 +58,6 @@ function HomepageHeader() {
         <Link className={styles.heroCTA} to={HERO_CONTENT.ctaLink}>
           {HERO_CONTENT.ctaText}
         </Link>
-      </div>
-
-      <div className={styles.heroImageSection}>
-        <div className={styles.heroImageContainer}>
-            <img
-              src={HERO_IMAGE.imgPath}
-              alt={HERO_IMAGE.alt}
-              className={styles.heroImage}
-            />
-          {/* Gradient overlay for text readability */}
-          <div className={styles.heroImageOverlay} />
-        </div>
       </div>
     </header>
   );
