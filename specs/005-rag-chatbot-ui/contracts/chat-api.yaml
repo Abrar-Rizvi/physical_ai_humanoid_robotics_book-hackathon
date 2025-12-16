@@ -1,0 +1,111 @@
+openapi: 3.0.0
+info:
+  title: RAG Chatbot API
+  description: API for RAG-powered chatbot that retrieves information from book content
+  version: 1.0.0
+servers:
+  - url: http://localhost:8000
+    description: Local development server
+paths:
+  /query:
+    post:
+      summary: Process user query against book content
+      description: Accepts a user query and returns a response based on retrieved book content
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/QueryRequest'
+      responses:
+        '200':
+          description: Successful response with answer and sources
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QueryResponse'
+        '400':
+          description: Bad request - invalid query format
+        '500':
+          description: Internal server error
+components:
+  schemas:
+    QueryRequest:
+      type: object
+      properties:
+        query:
+          type: string
+          description: The user's question or query text
+          example: "What are the key principles of humanoid robotics?"
+        context:
+          type: string
+          description: Optional context text (e.g., selected text from page)
+          example: "In the previous chapter, we discussed sensor integration..."
+        parameters:
+          type: object
+          description: Additional query parameters
+          properties:
+            top_k:
+              type: integer
+              description: Number of results to retrieve from vector database
+              default: 5
+            temperature:
+              type: number
+              description: Temperature for response generation
+              default: 0.3
+            max_tokens:
+              type: integer
+              description: Maximum tokens in response
+              default: 1000
+      required:
+        - query
+    QueryResponse:
+      type: object
+      properties:
+        answer:
+          type: string
+          description: The AI-generated response to the query
+          example: "The key principles of humanoid robotics include..."
+        sources:
+          type: array
+          description: Source citations for the response
+          items:
+            $ref: '#/components/schemas/Source'
+        query_id:
+          type: string
+          description: Unique identifier for the query
+          example: "550e8400-e29b-41d4-a716-446655440000"
+        timestamp:
+          type: string
+          description: ISO 8601 timestamp of the response
+          example: "2025-12-16T10:30:00Z"
+        status:
+          type: string
+          description: Status of the query processing
+          enum: [success, no_context, error]
+          example: "success"
+      required:
+        - answer
+        - sources
+        - query_id
+        - timestamp
+        - status
+    Source:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Document ID from Qdrant
+          example: "doc_12345"
+        content_snippet:
+          type: string
+          description: Brief excerpt from the source document
+          example: "Humanoid robots are designed to mimic human form and behavior..."
+        confidence:
+          type: number
+          description: Confidence/relevance score of the source (0-1)
+          example: 0.85
+      required:
+        - id
+        - content_snippet
+        - confidence

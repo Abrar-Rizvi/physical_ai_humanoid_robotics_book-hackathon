@@ -8,6 +8,8 @@ import Heading from '@theme/Heading';
 
 import styles from './index.module.css';
 
+
+
 // Hero Content Constants
 const HERO_CONTENT = {
   headline: "Master Physical AI & Build Real Humanoid Robots",
@@ -67,6 +69,8 @@ export default function Home(): ReactNode {
       <HomepageHeader />
       <main>
         <HomepageFeatures />
+      
+      
       </main>
     </Layout>
   );
