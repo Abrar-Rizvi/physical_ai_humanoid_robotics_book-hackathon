@@ -1,0 +1,88 @@
+/* Basic CSS Grid layout styles will be added here */
+/* This will be updated in T008-T009 */
+
+.contentSection {
+  padding: 2rem 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.sectionHeading {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: var(--ifm-heading-color);
+}
+
+.gridContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.card {
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 8px;
+  padding: 1.5rem;
+  background-color: var(--ifm-card-background-color, #ffffff);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.cardTitle {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 1.25rem;
+  color: var(--ifm-heading-color);
+}
+
+.cardContent {
+  color: var(--ifm-font-color-base);
+}
+
+.cardContent li:hover {
+  color: var(--ifm-color-primary);
+}
+
+.bulletList {
+  padding-left: 1.5rem;
+  list-style: none;
+}
+
+.bulletList li {
+  margin-bottom: 0.5rem;
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.bulletList li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--ifm-color-primary);
+  font-weight: bold;
+}
+
+/* Responsive layout will be enhanced in T018-T020 */
+@media (max-width: 1024px) {
+  .gridContainer {
+    grid-template-columns: 1fr;
+  }
+
+  .sectionHeading {
+    font-size: 1.75rem;
+  }
+}
+
+/* Dark mode specific styles */
+[data-theme='dark'] .card {
+  background-color: var(--ifm-card-background-color, #1c1e21);
+}
+
+[data-theme='dark'] .card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
