@@ -7,7 +7,7 @@ import type * as Preset from '@docusaurus/preset-classic';
 const config: Config = {
   title: 'Physical AI & Humanoid Robotics Book',
   tagline: 'An authoritative handbook on Physical AI and Humanoid Robotics.',
-  favicon: 'img/favicon.jpg',
+  favicon: 'img/tab.ico',
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
   future: {
@@ -61,7 +61,7 @@ const config: Config = {
       title: 'Physical AI Book',
       logo: {
         alt: 'My Site Logo',
-        src: '/img/header-image.png',
+        src: '/img/logo1.png',
       },
       items: [
         {
