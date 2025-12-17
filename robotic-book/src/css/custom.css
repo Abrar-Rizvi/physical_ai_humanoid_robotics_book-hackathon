@@ -57,6 +57,14 @@
   color: rgba(255, 255, 255, 0.8) !important;
 }
 
+.navbar__logo img {
+  border-radius: 50% !important;   /* makes it perfectly circular */
+  width: 40px;                     /* optional: control size */
+  height: 40px;                    /* optional: control size */
+  object-fit: cover;               /* ensures image fits inside circle */
+}
+
+
 /* Apply blue gradient to footer */
 .footer {
   background: linear-gradient(135deg, var(--footer-bg-start) 0%, var(--footer-bg-end) 100%) !important;
@@ -73,3 +81,12 @@
 .footer__link:hover {
   color: rgba(255, 255, 255, 0.8) !important;
 }
+
+.footer a {
+  color: #ffffff !important;
+}
+
+.footer a:hover {
+  color: rgba(255, 255, 255, 0.8) !important;
+}
+
