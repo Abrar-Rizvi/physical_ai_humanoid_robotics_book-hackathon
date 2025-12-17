@@ -6,3 +6,4 @@ pydantic>=2.5.0
 python-dotenv>=1.0.0
 tiktoken>=0.5.2
 pydantic-settings>=2.0.0
+cohere>=5.0.0

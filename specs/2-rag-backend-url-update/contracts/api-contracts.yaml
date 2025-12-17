@@ -1,0 +1,124 @@
+# API Contracts: RAG Backend URL Update
+
+**Feature**: RAG Backend URL Update
+**Date**: 2025-12-17
+
+## Overview
+This document defines the API contracts for the RAG chatbot system, focusing on the /query endpoint that will be updated from localhost to the deployed Render backend.
+
+## Base URL
+### Before (Local Development)
+`http://127.0.0.1:8000`
+
+### After (Production - Render Deployment)
+`https://physical-ai-humanoid-robotics-book-v4wt.onrender.com`
+
+## Common Headers
+- `Content-Type: application/json`
+- `Accept: application/json`
+
+## Endpoint: /query (POST)
+
+### Request
+```json
+{
+  "query": "What is the main topic of the book?",
+  "context": "",
+  "session_id": "session-1234567890"
+}
+```
+
+#### Request Fields
+- `query` (string, required): The user's question or query
+- `context` (string, optional): Additional context (currently unused, empty string)
+- `session_id` (string, required): Unique session identifier (frontend-generated timestamp-based ID)
+
+#### Validation
+- `query` must be 1-2000 characters
+- `session_id` must be a valid string identifier
+- `context` can be empty string
+
+### Successful Response (200 OK)
+```json
+{
+  "answer": "The main topic of the book is physical AI and humanoid robotics...",
+  "sources": [
+    {
+      "title": "Introduction to Physical AI",
+      "url": "https://example.com/intro",
+      "content": "Physical AI combines artificial intelligence with physical systems..."
+    }
+  ],
+  "status": "success"
+}
+```
+
+#### Response Fields
+- `answer` (string, required): The AI-generated response
+- `sources` (array of objects, optional): Source documents used in the response
+- `status` (string, optional): Status of the request ("success" if not provided)
+
+### Error Response (500)
+```json
+{
+  "status": "error",
+  "answer": "Sorry, something went wrong.",
+  "sources": []
+}
+```
+
+#### Error Response Fields
+- `status` (string, required): "error"
+- `answer` (string, optional): Error message to display to user
+- `sources` (array, optional): Empty array for error responses
+
+### Response Headers
+- `Content-Type: application/json`
+
+## Endpoint: /health (GET)
+*(Not changing, included for completeness)*
+
+### Successful Response (200 OK)
+```json
+{
+  "status": "healthy",
+  "timestamp": "2025-12-17T00:00:00Z",
+  "version": "0.1.0"
+}
+```
+
+## CORS Policy
+### Current Configuration (in backend/src/main.py)
+```python
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Will allow frontend from any origin
+    allow_credentials=True,
+    allow_methods=["*"],  # Will allow POST, GET, OPTIONS, etc.
+    allow_headers=["*"],  # Will allow all headers
+)
+```
+
+### Expected Behavior
+- Frontend from any origin can make requests to the backend
+- POST requests with JSON content are allowed
+- All necessary headers for API communication are allowed
+
+## Migration Requirements
+1. Frontend must update API base URL from localhost to Render URL
+2. Request format and payload structure must remain unchanged
+3. Response handling logic must remain unchanged
+4. Error handling patterns must remain unchanged
+5. Session management approach must remain unchanged
+
+## Security Considerations
+- Production backend uses HTTPS protocol
+- CORS configuration allows all origins (should be restricted in production)
+- No authentication required for basic queries
+- Session IDs are client-generated and not security-sensitive
+
+## Error Scenarios
+- Network timeout: Frontend should show user-friendly message
+- Backend unavailable: Return error response with status "error"
+- Invalid request format: Backend should return appropriate error
+- Rate limiting: Backend may implement in future, frontend should handle gracefully

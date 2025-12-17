@@ -26,7 +26,7 @@ const ChatbotUI = () => {
 
     // In a real application, you would make an actual API call:
     try {
-      const response = await fetch('https://physical-ai-humanoid-robotics-book-v4wt.onrender.com/query', {
+      const response = await fetch('http://127.0.0.1:8000/query', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
