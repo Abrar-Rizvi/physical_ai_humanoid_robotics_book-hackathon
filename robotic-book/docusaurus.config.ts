@@ -7,7 +7,7 @@ import type * as Preset from '@docusaurus/preset-classic';
 const config: Config = {
   title: 'Physical AI & Humanoid Robotics Book',
   tagline: 'An authoritative handbook on Physical AI and Humanoid Robotics.',
-  favicon: 'img/favicon.ico',
+  favicon: 'img/favicon.jpg',
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
   future: {
@@ -98,12 +98,12 @@ const config: Config = {
               href: 'https://stackoverflow.com/questions/tagged/docusaurus',
             },
             {
-              label: 'Discord',
-              href: 'https://discordapp.com/invite/docusaurus',
+              label: "Author's portfolio",
+              href: 'https://m-abrar-portfolio.vercel.app/',
             },
             {
-              label: 'X',
-              href: 'https://x.com/docusaurus',
+              label: 'Twitter',
+              href: 'https://x.com/abrar8949',
             },
           ],
         },
@@ -112,7 +112,11 @@ const config: Config = {
           items: [
             {
               label: 'GitHub',
-              href: 'https://github.com/facebook/docusaurus',
+              href: 'https://github.com/Abrar-Rizvi',
+            },
+            {
+              label: 'Linkedin',
+              href: 'https://www.linkedin.com/in/abrar-rizvi/',
             },
           ],
         },
