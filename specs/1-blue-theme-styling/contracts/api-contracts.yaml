@@ -1,0 +1,13 @@
+# API Contracts: Blue Gradient Theme Styling
+
+**Feature**: 1-blue-theme-styling
+**Date**: 2025-12-17
+
+## Overview
+This feature involves styling updates only with no API changes. No new endpoints or API contracts are created as part of this implementation.
+
+## UI-Only Feature
+- All changes are confined to CSS/styling
+- No backend API modifications
+- No new data models or API endpoints
+- Frontend-only visual updates
