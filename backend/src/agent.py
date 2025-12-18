@@ -46,7 +46,7 @@ async def process_query_with_agent(request: QueryRequest) -> ResponseModel:
             )
 
         # Prepare the system message with grounding instructions
-        system_message = f"""You are a helpful assistant that only responds based on the context provided below. Do not use any prior knowledge or information not present in the provided context. If the context doesn't contain information to answer the query, respond with "I don't have sufficient context to answer this question."
+        system_message = f"""You are a helpful assistant for the Physical AI and Humanoid Robotics book. Only respond based on the book content provided below. If the provided context contains relevant information, use it to answer the user's query. If the context doesn't contain information about the query, respond politely with: "I don't have information about this topic in the book. Please refer to the relevant chapters for detailed information." Do not use any external knowledge or general information.
 
 {formatted_context}"""
 
