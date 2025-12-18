@@ -228,7 +228,7 @@ const ChatbotUI = () => {
     setIsThinking(true); // SHOW THINKING
 
     try {
-      const response = await fetch('http://localhost:8000/query', {
+      const response = await fetch('https://physical-ai-humanoid-robotics-book-v4wt.onrender.com/query', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
